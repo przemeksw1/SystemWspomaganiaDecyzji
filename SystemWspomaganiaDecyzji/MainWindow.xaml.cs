@@ -57,7 +57,7 @@ namespace SystemWspomaganiaDecyzji
         }
 
         // To jest wybieranie i wczytywanie pliku.     
-        private async void Button_LookFile_Click(object sender, RoutedEventArgs e)
+        private async void ReadFileButton_Click(object sender, RoutedEventArgs e)
         {
             string filePath;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -93,6 +93,13 @@ namespace SystemWspomaganiaDecyzji
             }
             dataGrid.ItemsSource = allColumns.FullFile;
             await Task.Delay(50);
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuGrid.Visibility == Visibility.Visible)
+                MenuGrid.Visibility = Visibility.Collapsed;
+            else MenuGrid.Visibility = Visibility.Visible;
         }
     }
 }
