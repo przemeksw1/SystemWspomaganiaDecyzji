@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SystemWspomaganiaDecyzji/1.0.0": {
+        "runtime": {
+          "SystemWspomaganiaDecyzji.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SystemWspomaganiaDecyzji/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

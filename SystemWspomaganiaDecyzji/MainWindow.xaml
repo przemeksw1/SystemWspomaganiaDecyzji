@@ -1,0 +1,29 @@
+﻿<Window x:Class="SystemWspomaganiaDecyzji.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemWspomaganiaDecyzji"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+        <Button Content="File" Click="Button_LookFile_Click" Width="100" Height="30"></Button>
+        <Button Content="Test" Click="Button_Test_Click" Width="100" Height="30"></Button>
+            <TextBlock x:Name="testtext"></TextBlock>
+            <DataGrid x:Name="dataGrid"
+                      AutoGenerateColumns="False"  
+                      EnableRowVirtualization="True"
+                      EnableColumnVirtualization="True"
+                      SelectionUnit="Cell">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <EventSetter Event="Click" Handler="columnHeaderClick"></EventSetter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+            </DataGrid>
+        </StackPanel>
+
+       
+    </Grid>
+</Window>
