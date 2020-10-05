@@ -17,3 +17,22 @@ C:\Users\PRZEMEK\source\repos\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\
 C:\Users\PRZEMEK\source\repos\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.dll
 C:\Users\PRZEMEK\source\repos\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.pdb
 C:\Users\PRZEMEK\source\repos\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.genruntimeconfig.cache
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.exe
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.deps.json
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.runtimeconfig.json
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.runtimeconfig.dev.json
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.dll
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\bin\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.pdb
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.csprojAssemblyReference.cache
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji_MarkupCompile.cache
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji_MarkupCompile.lref
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.g.resources
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.AssemblyInfoInputs.cache
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.AssemblyInfo.cs
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.csproj.CoreCompileInputs.cache
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.dll
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.pdb
+C:\Users\Kasia\Desktop\STUDIA_MATERIAŁY\SEMESTR II\SWD\SystemWspomaganiaDecyzji\SystemWspomaganiaDecyzji\obj\Debug\netcoreapp3.1\SystemWspomaganiaDecyzji.genruntimeconfig.cache
