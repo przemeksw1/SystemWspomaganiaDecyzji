@@ -4,27 +4,27 @@ using System.Text;
 
 namespace SystemWspomaganiaDecyzji.Models
 {
-    public class AllColumns
+    public class AllRows
     {
         private static readonly object _lock = new object();
-        public List<ColumnView> FullFile { get; set; }
-        private static AllColumns _instance;
+        public List<RowView> FullFile { get; set; }
+        private static AllRows _instance;
         public string tmp = "dupa";
-        private AllColumns()
+        private AllRows()
         {
-            FullFile = new List<ColumnView>();
+            FullFile = new List<RowView>();
         }
         public static void ClearFullFile()
         {
-            _instance = new AllColumns();
+            _instance = new AllRows();
         }
-        public static AllColumns GetInstance()
+        public static AllRows GetInstance()
         {
             if(_instance == null)
             {
                 lock (_lock)
                 {
-                    _instance = new AllColumns();
+                    _instance = new AllRows();
                 }
             }
 
@@ -34,9 +34,9 @@ namespace SystemWspomaganiaDecyzji.Models
 
     }
 
-    public class ColumnView
+    public class RowView
     {
-        public ColumnView()
+        public RowView()
         {
             Value = new List<string>();
         }

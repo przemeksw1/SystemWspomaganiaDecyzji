@@ -51,8 +51,8 @@ namespace SystemWspomaganiaDecyzji
       
         private void Button_Test_Click(object sender, RoutedEventArgs e)
         {
-            AllColumns allColumns = AllColumns.GetInstance();
-            allColumns.FullFile[1].Value[1]  = "fdf";
+           // AllColumns allColumns = AllColumns.GetInstance();
+            //allColumns.FullFile[1].Value[1]  = "fdf";
           //  dataGrid.SelectedCells.
         }
 
@@ -76,7 +76,7 @@ namespace SystemWspomaganiaDecyzji
         {
             FileReadWrite fileReadWrite = new FileReadWrite();
             fileReadWrite.ReadFileFromPath(filePath);
-            AllColumns allColumns = AllColumns.GetInstance();
+            AllRows allColumns = AllRows.GetInstance();
            
             for (int i = 0; i < allColumns.FullFile[0].Value.Count(); i++)
             {

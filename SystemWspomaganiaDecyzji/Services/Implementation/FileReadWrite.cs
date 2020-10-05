@@ -12,7 +12,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
     {
         public void ReadFileFromPath(string path)
         {
-            AllColumns allColumns = AllColumns.GetInstance();
+            AllRows allColumns = AllRows.GetInstance();
 
             char[] delimiters = new[] { ' ', ';', '\t' };
             string line;
@@ -27,7 +27,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                 {
                         //if (allColumns.FullFile.Count() == 0)
                         //{
-                        ColumnView column = new ColumnView();
+                        RowView column = new RowView();
                         for (int i = 0; i < splitLine.Length; i++)
                         {
                                
