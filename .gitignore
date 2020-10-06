@@ -5,3 +5,4 @@
 /.vs/SystemWspomaganiaDecyzji/DesignTimeBuild/.dtbcache.v2
 *.suo
 /.vs
+/SystemWspomaganiaDecyzji/obj/Debug/netcoreapp3.1
