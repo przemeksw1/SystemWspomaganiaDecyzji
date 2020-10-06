@@ -51,6 +51,7 @@ namespace SystemWspomaganiaDecyzji
         private void Button_Test_Click(object sender, RoutedEventArgs e)
         {
 
+
         }
 
         // To jest wybieranie i wczytywanie pliku.     
