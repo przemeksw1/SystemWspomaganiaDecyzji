@@ -41,7 +41,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                             for (int i = 0; i < splitLine.Length; i++)
                             {                                
                                 column.Value.Add(splitLine[i]);
-                                allColumns.HeaderName.Add("Kolumna " + "1");
+                                allColumns.HeaderName.Add("Kolumna " + i);
                             }
                             allColumns.FullFile.Add(column);
                         }
