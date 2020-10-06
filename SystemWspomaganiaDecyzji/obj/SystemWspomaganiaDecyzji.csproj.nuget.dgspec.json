@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
+    "C:\\Users\\MICRO-PS\\Source\\Repos\\przemeksw1\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
+    "C:\\Users\\MICRO-PS\\Source\\Repos\\przemeksw1\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "projectUniqueName": "C:\\Users\\MICRO-PS\\Source\\Repos\\przemeksw1\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
         "projectName": "SystemWspomaganiaDecyzji",
-        "projectPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
-        "packagesPath": "C:\\Users\\Kasia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
+        "projectPath": "C:\\Users\\MICRO-PS\\Source\\Repos\\przemeksw1\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "packagesPath": "C:\\Users\\MICRO-PS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MICRO-PS\\Source\\Repos\\przemeksw1\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kasia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MICRO-PS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

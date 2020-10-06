@@ -8,6 +8,7 @@ namespace SystemWspomaganiaDecyzji.Models
     {
         private static readonly object _lock = new object();
         public List<RowView> FullFile { get; set; }
+        public List<string> HeaderName { get; set; }
         private static AllRows _instance;
         public string tmp = "dupa";
         private AllRows()

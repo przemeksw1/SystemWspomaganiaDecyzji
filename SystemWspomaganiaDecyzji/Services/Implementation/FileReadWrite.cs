@@ -10,14 +10,14 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
 {
     class FileReadWrite : IFileReadWrite
     {
-        public void ReadFileFromPath(string path)
+        public void ReadFileFromPath(string path, bool firstRowHeader)
         {
             AllRows allColumns = AllRows.GetInstance();
 
             char[] delimiters = new[] { ' ', ';', '\t' };
             string line;
             string[] splitLine;
-
+            bool firstRow = true;
             StreamReader file = new StreamReader(path);
             while ((line = file.ReadLine()) != null)
             {
@@ -25,28 +25,42 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                 if(splitLine.Length >0 )
                 if (splitLine[0].FirstOrDefault() != '#')
                 {
-                        //if (allColumns.FullFile.Count() == 0)
-                        //{
-                        RowView column = new RowView();
-                        for (int i = 0; i < splitLine.Length; i++)
+                        if (firstRowHeader && firstRow)
                         {
-                               
-                            //List<string> column = new List<string>();
-                            column.Value.Add(splitLine[i]);
-                          
+                            allColumns.HeaderName = new List<string>();
+                            for (int i = 0; i < splitLine.Length; i++)
+                            {
+                                allColumns.HeaderName.Add(splitLine[i]);
+                            }                            
+                            firstRow = false;
                         }
-                        allColumns.FullFile.Add(column);
-                        //}
-                        //else
-                        //{
-                        //    for (int i = 0; i < allColumns.FullFile.Count(); i++)
-                        //    {
-                        //        allColumns.FullFile[i].Value.Add(splitLine[i]);
-                        //    }
-                        //}
-                    }
+                        else if(!firstRowHeader && firstRow)
+                        {
+                            RowView column = new RowView();
+                            allColumns.HeaderName = new List<string>();
+                            for (int i = 0; i < splitLine.Length; i++)
+                            {                                
+                                column.Value.Add(splitLine[i]);
+                                allColumns.HeaderName.Add("Kolumna " + "1");
+                            }
+                            allColumns.FullFile.Add(column);
+                        }
+                        else
+                        {
+                            RowView column = new RowView();
+                            for (int i = 0; i < splitLine.Length; i++)
+                            {
+                                //List<string> column = new List<string>();
+                                column.Value.Add(splitLine[i]);
+
+                            }
+                            allColumns.FullFile.Add(column);
+                        }
+                }
                
             }
+
+
 
             // działa jakoś trzeba poprawić aby ominąć dodanie początkowego wiersza albo coś takiego
            

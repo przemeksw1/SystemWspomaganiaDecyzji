@@ -26,9 +26,8 @@ namespace SystemWspomaganiaDecyzji
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private DataGrid dataGrid;
-        //private ProgressBar progressBar;
-
+        private bool firstRowHaveHeader = false;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -51,9 +50,7 @@ namespace SystemWspomaganiaDecyzji
       
         private void Button_Test_Click(object sender, RoutedEventArgs e)
         {
-           // AllColumns allColumns = AllColumns.GetInstance();
-            //allColumns.FullFile[1].Value[1]  = "fdf";
-          //  dataGrid.SelectedCells.
+
         }
 
         // To jest wybieranie i wczytywanie pliku.     
@@ -64,10 +61,18 @@ namespace SystemWspomaganiaDecyzji
             if (openFileDialog.ShowDialog() == true)
             {
                 filePath = openFileDialog.FileName.ToString();
+             
+                var result = MessageBox.Show("Czy pierwsza linia zawiera nagłowki", "Pytanie", MessageBoxButton.YesNo);   
 
-                // 
-                // Dodać sprawdzenie czy posiada nagłówki już czy mamy ręcznie podać nagłówki i je dodać.
-                //
+                switch(result)
+                {
+                    case MessageBoxResult.Yes:
+                        firstRowHaveHeader = true;
+                        break;
+                    case MessageBoxResult.No:
+                        firstRowHaveHeader = false;
+                        break;
+                }                 
 
                 await HeavyMethod(filePath);
             }                       
@@ -75,7 +80,7 @@ namespace SystemWspomaganiaDecyzji
         private async Task HeavyMethod(string filePath)
         {
             FileReadWrite fileReadWrite = new FileReadWrite();
-            fileReadWrite.ReadFileFromPath(filePath);
+            fileReadWrite.ReadFileFromPath(filePath, firstRowHaveHeader);
             AllRows allColumns = AllRows.GetInstance();
            
             for (int i = 0; i < allColumns.FullFile[0].Value.Count(); i++)
@@ -88,7 +93,7 @@ namespace SystemWspomaganiaDecyzji
                 binding.ValidatesOnDataErrors = true;
                 column.Binding = binding;
                 column.CanUserSort = false;
-                column.Header = "dupa" + i;                
+                column.Header = allColumns.HeaderName[i];                
                 dataGrid.Columns.Add(column);
             }
             dataGrid.ItemsSource = allColumns.FullFile;
