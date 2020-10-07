@@ -12,8 +12,9 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
     {
         public void ReadFileFromPath(string path, bool firstRowHeader)
         {
+            AllRows.ClearFullFile();
             AllRows allColumns = AllRows.GetInstance();
-
+            
             char[] delimiters = new[] { ' ', ';', '\t' };
             string line;
             string[] splitLine;
@@ -41,7 +42,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                             for (int i = 0; i < splitLine.Length; i++)
                             {                                
                                 column.Value.Add(splitLine[i]);
-                                allColumns.HeaderName.Add("Kolumna " + i);
+                                allColumns.HeaderName.Add("Kolumna__" + (i+1));
                             }
                             allColumns.FullFile.Add(column);
                         }
@@ -58,12 +59,13 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                         }
                 }
                
-            }
-
-
-
-            // działa jakoś trzeba poprawić aby ominąć dodanie początkowego wiersza albo coś takiego
-           
+            }          
+        }
+        // Jeszcze trzeba dokończyć albo inaczej zacząć na dobre
+        public void WriteToFile(string fileName, bool firstRowAsName)
+        {
+            AllRows allColumns = AllRows.GetInstance();
+            throw new NotImplementedException();
         }
     }
 }

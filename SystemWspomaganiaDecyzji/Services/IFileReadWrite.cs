@@ -9,5 +9,6 @@ namespace SystemWspomaganiaDecyzji.Services
     public interface IFileReadWrite
     {
         void ReadFileFromPath(string path, bool firstRow);
+        void WriteToFile(string fileName, bool firstRowAsName);
     }
 }

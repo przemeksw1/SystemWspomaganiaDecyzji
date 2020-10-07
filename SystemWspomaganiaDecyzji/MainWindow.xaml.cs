@@ -111,8 +111,7 @@ namespace SystemWspomaganiaDecyzji
             column.Binding = binding;
             column.CanUserSort = false;
             column.Header = allColumns.HeaderName[columnNumber];
-            dataGrid.Columns.Add(column);
-
+            dataGrid.Columns.Insert(columnNumber,column);            
             ComboBoxFill();
         }
 
@@ -160,7 +159,33 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveButton_Numeric_Click(object sender, RoutedEventArgs e)
         {
-
+           // int countOfIntervals = Convert.ToInt32(ColumnCombo_Numeric.Text);
+            int numOfColumn = ColumnCombo_Numeric.SelectedIndex;
+            int numTypeOfSort = TypeCombo_Numeric.SelectedIndex;
+            if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+            else
+            {
+                switch(numTypeOfSort)
+                {
+                    case 0:
+                        {
+                            TextToNumeric.AlfabeticTextToNumber(numOfColumn);
+                        }
+                        break;
+                    case 1:
+                        {
+                            TextToNumeric.OrderTextToNumber(numOfColumn);
+                        }
+                        break;
+                    default:
+                        {
+                            MessageBox.Show("Coś poszło nie tak");
+                        }
+                        break;
+                }              
+                //odświeżenie widoku - wyświetlenie zmian
+                DisplayNewDataInMenu(numOfColumn + 1);
+            }
         }
     }
 }
