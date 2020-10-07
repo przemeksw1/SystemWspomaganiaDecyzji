@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SystemWspomaganiaDecyzji.Models
 {
-    public class TextToNumberHealper
+    public class TextToNumberHelper
     {
         public string text { get; set; }
         public int number { get; set; }

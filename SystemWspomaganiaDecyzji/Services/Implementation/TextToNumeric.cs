@@ -6,13 +6,13 @@ using SystemWspomaganiaDecyzji.Models;
 
 namespace SystemWspomaganiaDecyzji.Services.Implementation
 {
-    public class TextToNumeric : ITextToNumeric
+    public static class TextToNumeric
     {
-        public void AlfabeticTextToNumber(int collumn, bool firstRowHaveHeader)
+        public static void AlfabeticTextToNumber(int collumn)
         {
             AllRows allRows = AllRows.GetInstance();
-            List<TextToNumberHealper> tmpHelperList = new List<TextToNumberHealper>();
-            TextToNumberHealper textToNumberHealper = new TextToNumberHealper();
+            List<TextToNumberHelper> tmpHelperList = new List<TextToNumberHelper>();
+            TextToNumberHelper textToNumberHealper = new TextToNumberHelper();
 
             allRows.HeaderName.Insert(collumn + 1, allRows.HeaderName[collumn] + "__num__a");
 
@@ -21,12 +21,12 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                 var text = tmpHelperList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
                 if (text == null)
                 {
-                    textToNumberHealper = new TextToNumberHealper();
+                    textToNumberHealper = new TextToNumberHelper();
                     textToNumberHealper.text = allRows.FullFile[i].Value[collumn];
                     tmpHelperList.Add(textToNumberHealper);
                 }
             }
-            tmpHelperList.Sort(delegate (TextToNumberHealper x, TextToNumberHealper y)
+            tmpHelperList.Sort(delegate (TextToNumberHelper x, TextToNumberHelper y)
             {
                 if (x.text == null && y.text == null) return 0;
                 else if (x.text == null) return -1;
@@ -44,12 +44,12 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
             }
         }
 
-        public void OrderTextToNumber(int collumn, bool firstRowHaveHeader)
+        public static void OrderTextToNumber(int collumn)
         {
             
             AllRows allRows = AllRows.GetInstance();
-            List<TextToNumberHealper> tmpHealerList = new List<TextToNumberHealper>();
-            TextToNumberHealper textToNumberHealper = new TextToNumberHealper();
+            List<TextToNumberHelper> tmpHealerList = new List<TextToNumberHelper>();
+            TextToNumberHelper textToNumberHealper = new TextToNumberHelper();
             int counter = 1;
             
             allRows.HeaderName.Insert(collumn + 1, allRows.HeaderName[collumn] + "__num__k");
@@ -59,7 +59,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                 var text = tmpHealerList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
                 if (text == null)
                 {
-                    textToNumberHealper = new TextToNumberHealper();
+                    textToNumberHealper = new TextToNumberHelper();
                     textToNumberHealper.text = allRows.FullFile[i].Value[collumn];
                     textToNumberHealper.number = counter;
                     allRows.FullFile[i].Value.Insert(collumn + 1, counter.ToString()) ;
