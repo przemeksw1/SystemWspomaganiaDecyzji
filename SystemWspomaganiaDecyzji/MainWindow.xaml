@@ -7,9 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="450" MinWidth="950" Height="450" Width="950">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            
+        
             <Grid Name="Menu" HorizontalAlignment="Stretch">
                 <StackPanel Grid.ZIndex="2" HorizontalAlignment="Left">
                     <Button Name="MenuButton" Click="MenuButton_Click" Width="50" Height="50" Background="#FFD7DCFA">
@@ -30,8 +33,8 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="1" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0"  Click="ReadFileButton_Click">Załaduj dane</Button>
-                    <Button Grid.Row="2" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0">Zapisz plik</Button>
+                    <Button Grid.Row="1" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ReadFileButton_Click">Załaduj dane</Button>
+                    <Button Grid.Row="2" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveFileButton_Click">Zapisz plik</Button>
                     <Grid Grid.Column="1" Grid.RowSpan="3"  HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -47,8 +50,11 @@
                             </GroupBox.Header>
                             <StackPanel>
                                 <ComboBox Name="ColumnCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <ComboBox Name="TypeCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolejnosc --"></ComboBox>
-                                <Button x:Name="SaveButton_Numeric" Width="50" Margin="0,30,0,0" Background="#FFFFFBF0" Content="OK"/>
+                                <ComboBox Name="TypeCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolejnosc --">
+                                    <ComboBoxItem>Według kolej. wystąpienia</ComboBoxItem>
+                                    <ComboBoxItem>Alfabetycznie</ComboBoxItem>
+                                </ComboBox>
+                                <Button x:Name="SaveButton_Numeric" Width="50" Margin="0,30,0,0" Background="#FFFFFBF0" Content="OK" Click="SaveButton_Numeric_Click"/>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Grid.Column="1" BorderThickness="1" BorderBrush="DarkGray">
@@ -61,7 +67,7 @@
                                     <Label>Ilość przedziałów:</Label>
                                     <TextBox Name="IntervalsText_Discret" Margin="0,5,5,5" Width="30">2</TextBox>
                                 </StackPanel>
-                                <Button Name="SaveButton_Discret" Width="50" Margin="0,34,0,0" Background="#FFFFFBF0">OK</Button>
+                                <Button Name="SaveButton_Discret" Width="50" Margin="0,34,0,0" Background="#FFFFFBF0" Click="SaveButton_Discret_Click">OK</Button>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Grid.Column="2" BorderThickness="1" BorderBrush="DarkGray">
@@ -130,7 +136,10 @@
                                 <TabItem Header="Histogram" >
                                     <StackPanel Background="AliceBlue">
                                         <ComboBox Name="ColumnCombo_Histogram" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                        <ComboBox Name="IntervalsCombo_Histogram" Margin="5" IsEditable="True" Text="-- Przedziały --"></ComboBox>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label>Ilość przedziałów:</Label>
+                                            <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
+                                        </StackPanel>
                                         <Button Name="SaveButton_Histogram" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
                                     </StackPanel>
                                 </TabItem>
@@ -140,14 +149,15 @@
                 </Grid>
             </Grid>
 
-            <Button Content="Test" Click="Button_Test_Click" Width="100" Height="30"></Button>
 
-            <TextBlock x:Name="testtext"></TextBlock>
-            <DataGrid x:Name="dataGrid"
+            <DataGrid Grid.Row="1" x:Name="dataGrid"
                       AutoGenerateColumns="False"  
                       EnableRowVirtualization="True"
                       EnableColumnVirtualization="True"
-                      SelectionUnit="Cell">
+                      SelectionUnit="Cell"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <EventSetter Event="Click" Handler="columnHeaderClick"></EventSetter>
@@ -156,6 +166,5 @@
             </DataGrid>
             
             
-        </StackPanel>
     </Grid>
 </Window>

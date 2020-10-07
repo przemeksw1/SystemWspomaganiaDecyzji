@@ -11,35 +11,35 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
         public void AlfabeticTextToNumber(int collumn, bool firstRowHaveHeader)
         {
             AllRows allRows = AllRows.GetInstance();
-            List<TextToNumberHealper> tmpHealerList = new List<TextToNumberHealper>();
+            List<TextToNumberHealper> tmpHelperList = new List<TextToNumberHealper>();
             TextToNumberHealper textToNumberHealper = new TextToNumberHealper();
 
             allRows.HeaderName.Insert(collumn + 1, allRows.HeaderName[collumn] + "__num__a");
 
             for (int i = 0; i < allRows.FullFile.Count(); i++)
             {
-                var text = tmpHealerList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
+                var text = tmpHelperList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
                 if (text == null)
                 {
                     textToNumberHealper = new TextToNumberHealper();
                     textToNumberHealper.text = allRows.FullFile[i].Value[collumn];
-                    tmpHealerList.Add(textToNumberHealper);
+                    tmpHelperList.Add(textToNumberHealper);
                 }
             }
-            tmpHealerList.Sort(delegate (TextToNumberHealper x, TextToNumberHealper y)
+            tmpHelperList.Sort(delegate (TextToNumberHealper x, TextToNumberHealper y)
             {
                 if (x.text == null && y.text == null) return 0;
                 else if (x.text == null) return -1;
                 else if (y.text == null) return 1;
-                else return x.text.CompareTo(y.text);
+                else return x.text.CompareTo(y.text); 
             });
-            for (int i = 0; i<tmpHealerList.Count(); i++)
+            for (int i = 0; i< tmpHelperList.Count(); i++)
             {
-                tmpHealerList[i].number = i + 1;
+                tmpHelperList[i].number = i + 1;
             }
             for (int i = 0; i < allRows.FullFile.Count(); i++)
             {
-                var text = tmpHealerList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
+                var text = tmpHelperList.SingleOrDefault(s => s.text.Equals(allRows.FullFile[i].Value[collumn]));
                 allRows.FullFile[i].Value.Insert(collumn + 1, text.number.ToString());
             }
         }

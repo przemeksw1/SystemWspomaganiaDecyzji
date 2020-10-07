@@ -10,7 +10,6 @@ namespace SystemWspomaganiaDecyzji.Models
         public List<RowView> FullFile { get; set; }
         public List<string> HeaderName { get; set; }
         private static AllRows _instance;
-        public string tmp = "dupa";
         private AllRows()
         {
             FullFile = new List<RowView>();
