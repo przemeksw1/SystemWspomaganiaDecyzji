@@ -12,7 +12,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
         {
             //tworzenie listy przedziałów
             List<double> intervals = new List<double>();
-            double[] minmax = MathHelper.FindMinMaxInColumn(AllRows.GetInstance().FullFile, numOfColumn);
+            double[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, numOfColumn);
             double intervalSize = (minmax[1] - minmax[0]) / countOfIntervals;
             double leftLimit = minmax[0];
             while (leftLimit < minmax[1])
