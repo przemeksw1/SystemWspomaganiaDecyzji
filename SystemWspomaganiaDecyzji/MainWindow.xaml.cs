@@ -80,11 +80,10 @@ namespace SystemWspomaganiaDecyzji
             fileReadWrite.ReadFileFromPath(filePath, firstRowHaveHeader);
             AllRows allColumns = AllRows.GetInstance();
            
-            for (int i = 0; i < allColumns.FullFile[0].Value.Count(); i++)
+            for (int i = 0; i < allColumns.FullFile[0].Value.Count; i++)
             {
-                Binding binding = new Binding(String.Format("Value[{0}]", i)); /// Prices[{0}].Price1 is path to Product -> Price -> Price ordered according to price names.
+                Binding binding = new Binding(String.Format("Value[{0}]", i)); 
                 DataGridTextColumn column = new DataGridTextColumn();
-
                 //binding.Converter = new PricesConverter();
                 binding.Mode = BindingMode.TwoWay;
                 binding.ValidatesOnDataErrors = true;
@@ -230,6 +229,19 @@ namespace SystemWspomaganiaDecyzji
                 ScalingIntervals.DoScalingIntervals(numOfColumn, min, max);
                 //odświeżenie widoku - wyświetlenie zmian
                 DisplayNewDataInMenu(numOfColumn + 1);
+            }
+        }
+
+        private void SaveButton_Percent_Click(object sender, RoutedEventArgs e)
+        {
+            double min = Convert.ToDouble(MinText_Percent.Text);
+            double max = Convert.ToDouble(MaxText_Percent.Text);
+            int numOfColumn = ColumnCombo_Percent.SelectedIndex;
+            if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+            else
+            {
+                PercentWindow percentWindow = new PercentWindow(min, max, numOfColumn);
+                percentWindow.Show();
             }
         }
     }
