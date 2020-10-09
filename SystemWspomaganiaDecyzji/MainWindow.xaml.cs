@@ -244,5 +244,11 @@ namespace SystemWspomaganiaDecyzji
                 percentWindow.Show();
             }
         }
+
+        private void SaveButton_Histogram_Click(object sender, RoutedEventArgs e)
+        {
+            HistogramWindow histogramWindow = new HistogramWindow();
+            histogramWindow.Show();
+        }
     }
 }

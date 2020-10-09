@@ -140,7 +140,7 @@
                                             <Label>Ilość przedziałów:</Label>
                                             <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
                                         </StackPanel>
-                                        <Button Name="SaveButton_Histogram" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                        <Button Name="SaveButton_Histogram" Click="SaveButton_Histogram_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
                                     </StackPanel>
                                 </TabItem>
                             </TabControl>
