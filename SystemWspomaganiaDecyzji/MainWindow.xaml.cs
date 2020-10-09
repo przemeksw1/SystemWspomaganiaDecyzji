@@ -251,7 +251,7 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveButton_Histogram_Click(object sender, RoutedEventArgs e)
         {
-            HistogramWindow histogramWindow = new HistogramWindow();
+            HistogramWindow histogramWindow = new HistogramWindow(4,2);
             histogramWindow.Show();
         }
     }

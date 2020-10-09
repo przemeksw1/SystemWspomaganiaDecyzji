@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
+using LiveCharts.Helpers;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -110,27 +111,74 @@ namespace SystemWspomaganiaDecyzji
         {
             InitializeComponent();
 
-            SeriesCollection = new SeriesCollection
+            AllRows allRows = AllRows.GetInstance();
+            bool rowIsString = false;
+            try
             {
-                new ColumnSeries
+                double tmp = Convert.ToDouble(allRows.FullFile[0].Value[columnNumber]);
+            }
+            catch
+            {
+                rowIsString = true;
+            }
+
+            if(rowIsString)
+            {
+                List<string> allString = new List<string>();
+                ChartValues<double> rowCount= new ChartValues<double>();
+                for (int i = 0; i < allRows.FullFile.Count(); i++)
                 {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    var text = allString.SingleOrDefault(s => s.Equals(allRows.FullFile[i].Value[columnNumber]));
+                    if (text == null)
+                    {
+                        var counter = allRows.FullFile.Where(s => s.Value[columnNumber] == allRows.FullFile[i].Value[columnNumber]).Count();
+                        allString.Add(allRows.FullFile[i].Value[columnNumber]);
+                        rowCount.Add(counter);
+                    }
                 }
-            };
 
-            //adding series will update and animate the chart automatically
-            SeriesCollection.Add(new ColumnSeries
+                string[] converter = allString.ToArray();
+
+                SeriesCollection = new SeriesCollection
+                {
+                    new ColumnSeries
+                    {
+                        Title = "2015",
+                        Values = rowCount
+                    }
+                };
+
+                Labels = converter;
+                Formatter = value => value.ToString("N");
+            }
+            else
             {
-                Title = "2016",
-                Values = new ChartValues<double> { 11, 56, 42 }
-            });
 
-            //also adding values updates and animates the chart automatically
-            SeriesCollection[1].Values.Add(48d);
+                SeriesCollection = new SeriesCollection
+                {
+                    new ColumnSeries
+                    {
+                        Title = "2015",
+                        Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    }
+                };
 
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
-            Formatter = value => value.ToString("N");
+                Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
+                Formatter = value => value.ToString("N");
+            }
+       
+
+            ////adding series will update and animate the chart automatically
+            //SeriesCollection.Add(new ColumnSeries
+            //{
+            //    Title = "2016",
+            //    Values = new ChartValues<double> { 11, 56, 42 }
+            //});
+
+            ////also adding values updates and animates the chart automatically
+            //SeriesCollection[1].Values.Add(48d);
+           
+           
 
             DataContext = this;
         }
