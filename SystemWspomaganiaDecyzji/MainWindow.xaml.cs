@@ -218,5 +218,19 @@ namespace SystemWspomaganiaDecyzji
                 DisplayNewDataInMenu(numOfColumn + 1);
             }
         }
+
+        private void SaveButton_Intervals_Click(object sender, RoutedEventArgs e)
+        {
+            decimal min = Convert.ToDecimal(MinText_Intervals.Text);
+            decimal max = Convert.ToDecimal(MaxText_Intervals.Text);
+            int numOfColumn = ColumnCombo_Intervals.SelectedIndex;
+            if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+            else
+            {
+                ScalingIntervals.DoScalingIntervals(numOfColumn, min, max);
+                //odświeżenie widoku - wyświetlenie zmian
+                DisplayNewDataInMenu(numOfColumn + 1);
+            }
+        }
     }
 }

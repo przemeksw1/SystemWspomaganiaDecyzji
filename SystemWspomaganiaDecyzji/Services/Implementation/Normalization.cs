@@ -13,7 +13,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
             //dyskretyzacja przez dodanie nowej kolumny
             AllRows.GetInstance().HeaderName.Insert(numOfColumn + 1, AllRows.GetInstance().HeaderName[numOfColumn] + "__norm");
             string cell = "";
-            decimal avg = MathHelper.CalcAverageOfColumn(AllRows.GetInstance().FullFile, numOfColumn);
+            decimal avg = MathHelper.CalcAverage(AllRows.GetInstance().FullFile, numOfColumn);
             decimal deviation = MathHelper.CalcStandardDeviation(AllRows.GetInstance().FullFile, numOfColumn);
             decimal result = 0;
             decimal value = 0;

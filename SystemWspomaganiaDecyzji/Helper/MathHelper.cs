@@ -19,7 +19,7 @@ namespace SystemWspomaganiaDecyzji.Helper
             return sortedColumn;
         }
 
-        public static double[] FindMinMaxInColumn(List<RowView> allRows, int columnNumber)
+        public static double[] FindMinMax(List<RowView> allRows, int columnNumber)
         {
             List<double> sortedColumn = SortRowsByColumn(allRows, columnNumber);
             double[] minmax = new double[2];
@@ -28,7 +28,7 @@ namespace SystemWspomaganiaDecyzji.Helper
             return minmax;
         }
 
-        public static decimal CalcAverageOfColumn(List<RowView> allRows, int columnNumber)
+        public static decimal CalcAverage(List<RowView> allRows, int columnNumber)
         {
             decimal sum = 0;
             foreach (var row in allRows)
@@ -40,7 +40,7 @@ namespace SystemWspomaganiaDecyzji.Helper
 
         public static decimal CalcStandardDeviation(List<RowView> allRows, int columnNumber)
         {
-            decimal avg = CalcAverageOfColumn(allRows, columnNumber);
+            decimal avg = CalcAverage(allRows, columnNumber);
             decimal deviation = 0;
             decimal value;
             foreach (var row in allRows)
