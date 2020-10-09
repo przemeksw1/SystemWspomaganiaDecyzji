@@ -45,7 +45,7 @@
               "target": "Package",
               "version": "[0.9.7, )"
             },
-            "LiveCharts.Wpf": {
+            "LiveCharts.Wpf.NetCore3": {
               "target": "Package",
               "version": "[0.9.7, )"
             }

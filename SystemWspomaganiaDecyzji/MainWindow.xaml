@@ -157,7 +157,8 @@
                       SelectionUnit="Cell"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible">
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      LoadingRow="DataGrid_LoadingRow">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <EventSetter Event="Click" Handler="columnHeaderClick"></EventSetter>
