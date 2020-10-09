@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SystemWspomaganiaDecyzji.Helper;
 using SystemWspomaganiaDecyzji.Models;
@@ -10,25 +11,19 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
     {
         public static List<List<RowView>> DoPercentMinMaxCut(double min, double max, int columnNumber)
         {
-            List<double> sortedRows = MathHelper.SortRowsByColumn(AllRows.GetInstance().FullFile, columnNumber);
+            List<RowView> allRows = AllRows.GetInstance().FullFile;
+            allRows = allRows.OrderBy(o => Convert.ToDouble(o.Value[columnNumber])).ToList();
             List<RowView> minResultRows = new List<RowView>();
             List<RowView> maxResultRows = new List<RowView>();
             List<List<RowView>> resultRows = new List<List<RowView>>();
 
-            int minInterval = Convert.ToInt32(Math.Round(min/100 * sortedRows.Count));
-            int maxInterval = sortedRows.Count - Convert.ToInt32(Math.Round(max/100 * sortedRows.Count));
-            double minLeft = sortedRows[0];
-            double minRight = sortedRows[minInterval - 1];
-            double maxLeft = sortedRows[maxInterval];
-            double maxRight = sortedRows[sortedRows.Count - 1];
+            int minInterval = Convert.ToInt32(Math.Round(min/100 * allRows.Count));
+            int maxInterval = allRows.Count - Convert.ToInt32(Math.Round(max/100 * allRows.Count));
 
-            double cell;
-            foreach(var row in AllRows.GetInstance().FullFile)
-            {
-                cell = Convert.ToDouble(row.Value[columnNumber]);
-                if (cell >= minLeft && cell <= minRight) minResultRows.Add(row);
-                else if (cell >= maxLeft && cell <= maxRight) maxResultRows.Add(row);
-            }
+            for(int i=0; i<minInterval; i++)
+                minResultRows.Add(allRows[i]);
+            for (int i = maxInterval; i < allRows.Count; i++)
+                maxResultRows.Add(allRows[i]);
 
             resultRows.Add(minResultRows);
             resultRows.Add(maxResultRows);
