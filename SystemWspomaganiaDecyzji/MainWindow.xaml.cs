@@ -117,18 +117,38 @@ namespace SystemWspomaganiaDecyzji
 
         private void ComboBoxFill()
         {
+            ColumnCombo_Numeric.ItemsSource = new List<string>();
+            ColumnCombo_Numeric.Text = "-- Kolumna --";
             ColumnCombo_Numeric.ItemsSource = AllRows.GetInstance().HeaderName;
             ColumnCombo_Discret.ItemsSource = new List<string>();
             ColumnCombo_Discret.Text = "-- Kolumna --";
             ColumnCombo_Discret.ItemsSource = AllRows.GetInstance().HeaderName;
+            ColumnCombo_Normal.ItemsSource = new List<string>();
+            ColumnCombo_Normal.Text = "-- Kolumna --";
             ColumnCombo_Normal.ItemsSource = AllRows.GetInstance().HeaderName;
+            ColumnCombo_Intervals.ItemsSource = new List<string>();
+            ColumnCombo_Intervals.Text = "-- Kolumna --";
             ColumnCombo_Intervals.ItemsSource = AllRows.GetInstance().HeaderName;
+            ColumnCombo_Percent.ItemsSource = new List<string>();
+            ColumnCombo_Percent.Text = "-- Kolumna --";
             ColumnCombo_Percent.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column1Combo_2D.ItemsSource = new List<string>();
+            Column1Combo_2D.Text = "-- Kolumna --";
             Column1Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column2Combo_2D.ItemsSource = new List<string>();
+            Column2Combo_2D.Text = "-- Kolumna --";
             Column2Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column1Combo_3D.ItemsSource = new List<string>();
+            Column1Combo_3D.Text = "-- Kolumna --";
             Column1Combo_3D.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column2Combo_3D.ItemsSource = new List<string>();
+            Column2Combo_3D.Text = "-- Kolumna --";
             Column2Combo_3D.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column3Combo_3D.ItemsSource = new List<string>();
+            Column3Combo_3D.Text = "-- Kolumna --";
             Column3Combo_3D.ItemsSource = AllRows.GetInstance().HeaderName;
+            ColumnCombo_Histogram.ItemsSource = new List<string>();
+            ColumnCombo_Histogram.Text = "-- Kolumna --";
             ColumnCombo_Histogram.ItemsSource = AllRows.GetInstance().HeaderName;
         }
 
@@ -154,7 +174,6 @@ namespace SystemWspomaganiaDecyzji
                 //odświeżenie widoku - wyświetlenie zmian
                 DisplayNewDataInMenu(numOfColumn + 1);
             }
-
         }
 
         private void SaveButton_Numeric_Click(object sender, RoutedEventArgs e)
@@ -183,6 +202,18 @@ namespace SystemWspomaganiaDecyzji
                         }
                         break;
                 }              
+                //odświeżenie widoku - wyświetlenie zmian
+                DisplayNewDataInMenu(numOfColumn + 1);
+            }
+        }
+
+        private void SaveButton_Normal_Click(object sender, RoutedEventArgs e)
+        {
+            int numOfColumn = ColumnCombo_Normal.SelectedIndex;
+            if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+            else
+            {
+                Normalization.DoNormalization(numOfColumn);
                 //odświeżenie widoku - wyświetlenie zmian
                 DisplayNewDataInMenu(numOfColumn + 1);
             }
