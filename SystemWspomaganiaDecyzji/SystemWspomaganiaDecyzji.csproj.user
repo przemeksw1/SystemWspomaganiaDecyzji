@@ -12,12 +12,18 @@
     <Compile Update="HistogramWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="LineChartWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PercentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="HistogramWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LineChartWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

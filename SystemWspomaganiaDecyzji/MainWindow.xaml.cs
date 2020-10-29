@@ -153,6 +153,9 @@ namespace SystemWspomaganiaDecyzji
             ColumnCombo_Histogram.ItemsSource = new List<string>();
             ColumnCombo_Histogram.Text = "-- Kolumna --";
             ColumnCombo_Histogram.ItemsSource = AllRows.GetInstance().HeaderName;
+            Column3Combo_2D.ItemsSource = new List<string>();
+            Column3Combo_2D.Text = "-- Kolumna --";
+            Column3Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -251,8 +254,28 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveButton_Histogram_Click(object sender, RoutedEventArgs e)
         {
-            HistogramWindow histogramWindow = new HistogramWindow(4,2);
+            int numOfColumn = ColumnCombo_Histogram.SelectedIndex;
+            int intervals = Convert.ToInt32(IntervalsText_Histogram.Text);
+            HistogramWindow histogramWindow = new HistogramWindow(numOfColumn,intervals);
             histogramWindow.Show();
+        }
+
+        private void SaveButton_2D_Click(object sender, RoutedEventArgs e)
+        {
+            int axisX = Column1Combo_2D.SelectedIndex;
+            int axisY = Column2Combo_2D.SelectedIndex;
+            int decisionClass;
+            try
+            {
+                Column3Combo_2D.SelectedItem.ToString();
+                decisionClass = Column3Combo_2D.SelectedIndex;
+            }
+            catch
+            {
+                decisionClass = -1;
+            }
+            LineChartWindow lineChartWindow = new LineChartWindow(axisX, axisY, decisionClass);
+            lineChartWindow.Show();
         }
     }
 }

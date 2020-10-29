@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SystemWspomaganiaDecyzji.Helper;
 using SystemWspomaganiaDecyzji.Models;
 
 namespace SystemWspomaganiaDecyzji
@@ -107,7 +108,7 @@ namespace SystemWspomaganiaDecyzji
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
-        public HistogramWindow(int columnNumber, int intervals)
+        public HistogramWindow(int columnNumber, int countOfIntervals)
         {
             InitializeComponent();
 
@@ -142,8 +143,8 @@ namespace SystemWspomaganiaDecyzji
                 SeriesCollection = new SeriesCollection
                 {
                     new ColumnSeries
-                    {
-                        Title = "2015",
+                    {               
+                        
                         Values = rowCount
                     }
                 };
@@ -153,17 +154,64 @@ namespace SystemWspomaganiaDecyzji
             }
             else
             {
+                List<double> allValue = new List<double>();
+                ChartValues<double> rowCount = new ChartValues<double>();
+
+                List<double> intervals = new List<double>();
+                double[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, columnNumber);
+                double intervalSize = (minmax[1] - minmax[0]) / countOfIntervals;
+                double leftLimit = minmax[0];
+                while (leftLimit < minmax[1])
+                {
+                    intervals.Add(leftLimit);
+                    leftLimit += intervalSize;
+                }
+                double cell;
+                for (int i = 0; i < AllRows.GetInstance().FullFile.Count; i++)
+                {
+                    for (int j = 0; j < intervals.Count; j++)
+                    {
+                        if (j == intervals.Count - 1)
+                        {
+                            cell = j + 1;
+                            allValue.Add(cell);
+                            break;
+                        }
+                        else if (Convert.ToDouble(AllRows.GetInstance().FullFile[i].Value[columnNumber]) < intervals[j + 1])
+                        {
+                            cell = j + 1;
+                            allValue.Add(cell);
+                            break;
+                        }
+                    }
+                }
+
+                string[] label = new string[intervals.Count()];
+
+                for (int i=0; i<intervals.Count(); i++ )
+                {
+                    if (i == intervals.Count() - 1)
+                    {
+                        label[i] = "<" + intervals[i].ToString() + " : " + minmax[1].ToString() + ">";
+                    }
+                    else
+                    {
+                        label[i] = "<"+ intervals[i].ToString() + " : " + intervals[i +1 ].ToString() + ")";
+                    }
+                    var counter = allValue.Where(c => c == i + 1).Count();
+                    rowCount.Add(counter);
+                }
 
                 SeriesCollection = new SeriesCollection
                 {
                     new ColumnSeries
                     {
-                        Title = "2015",
-                        Values = new ChartValues<double> { 10, 50, 39, 50 }
+                         Values = rowCount
                     }
                 };
-
-                Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
+               
+                
+                Labels = label;
                 Formatter = value => value.ToString("N");
             }
        

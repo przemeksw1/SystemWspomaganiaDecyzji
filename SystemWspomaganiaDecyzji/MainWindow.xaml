@@ -122,7 +122,8 @@
                                     <StackPanel Background="AliceBlue">
                                         <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
                                         <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                        <Button Name="SaveButton_2D" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                        <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                    <Button Name="SaveButton_2D" Click="SaveButton_2D_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
                                     </StackPanel>
                                 </TabItem>
                                 <TabItem Header="3D" >
