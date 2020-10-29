@@ -43,7 +43,14 @@ namespace SystemWspomaganiaDecyzji.Helper
                 case MetricName.Euklides:
                     results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
                     break;
+                case MetricName.Manhattan:
+                    results = ClasificationMetrics.Manhatan(NewObject, AllRows.GetInstance().FullFile);
+                    break;
+                case MetricName.Czebyszew:
+                    results = ClasificationMetrics.Czebyszew(NewObject, AllRows.GetInstance().FullFile);
+                    break;
                 default:
+                    //results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
                     break;
             }
 

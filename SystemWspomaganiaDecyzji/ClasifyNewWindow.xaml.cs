@@ -71,6 +71,8 @@ namespace SystemWspomaganiaDecyzji
 
         private void ClassifyButton_Click(object sender, RoutedEventArgs e)
         {
+            bool IsError = false;
+
             if (ClassifyColumnCombo.SelectedItem == null)
                 DecisionColumn = AllRows.GetInstance().HeaderName.ToList().Count - 1;
             else DecisionColumn = ClassifyColumnCombo.SelectedIndex;
@@ -81,8 +83,13 @@ namespace SystemWspomaganiaDecyzji
             //MessageBox.Show(Metric.ToString());
 
             k = Convert.ToInt32(NeighboursText.Text);
+            if (k > AllRows.GetInstance().FullFile.Count) 
+            {
+                MessageBox.Show("k nie moze byc wieksze od ilosci obiektow");
+                IsError = true;
 
-            bool IsError = false;
+            }
+
             for(int i=0; i<NewObjects[0].Value.Count-1; i++)
             {
                 if(NewObjects[0].Value[i]=="")
