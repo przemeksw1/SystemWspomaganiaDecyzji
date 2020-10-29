@@ -29,13 +29,15 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="55"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Button Grid.Row="1" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ReadFileButton_Click">Załaduj dane</Button>
                     <Button Grid.Row="2" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveFileButton_Click">Zapisz plik</Button>
-                    <Grid Grid.Column="1" Grid.RowSpan="3"  HorizontalAlignment="Stretch">
+                    <Button Grid.Row="3" Height="25" Margin="0,5,5,5"  Background="#FFFFFBF0" Click="ClasifyButton_Click">Klasyfikuj obiekt</Button>
+                <Grid Grid.Column="1" Grid.RowSpan="4"  HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -122,7 +124,7 @@
                                     <StackPanel Background="AliceBlue">
                                         <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
                                         <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                        <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                        <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- K.Decyzyjna --"></ComboBox>
                                     <Button Name="SaveButton_2D" Click="SaveButton_2D_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
                                     </StackPanel>
                                 </TabItem>

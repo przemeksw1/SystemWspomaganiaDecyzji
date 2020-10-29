@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ClasifyNewWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="HistogramWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="ClasifyNewWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="HistogramWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

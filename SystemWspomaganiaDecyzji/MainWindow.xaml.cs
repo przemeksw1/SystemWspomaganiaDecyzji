@@ -105,7 +105,7 @@ namespace SystemWspomaganiaDecyzji
         private void DisplayNewDataInMenu(int columnNumber)
         {
             AllRows allColumns = AllRows.GetInstance();
-            Binding binding = new Binding(String.Format("Value[{0}]", columnNumber)); /// Prices[{0}].Price1 is path to Product -> Price -> Price ordered according to price names.
+            Binding binding = new Binding(String.Format("Value[{0}]", columnNumber)); 
             DataGridTextColumn column = new DataGridTextColumn();
 
             //binding.Converter = new PricesConverter();
@@ -154,7 +154,7 @@ namespace SystemWspomaganiaDecyzji
             ColumnCombo_Histogram.Text = "-- Kolumna --";
             ColumnCombo_Histogram.ItemsSource = AllRows.GetInstance().HeaderName;
             Column3Combo_2D.ItemsSource = new List<string>();
-            Column3Combo_2D.Text = "-- Kolumna --";
+            Column3Combo_2D.Text = "-- K.Decyzyjna --";
             Column3Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
         }
 
@@ -276,6 +276,12 @@ namespace SystemWspomaganiaDecyzji
             }
             LineChartWindow lineChartWindow = new LineChartWindow(axisX, axisY, decisionClass);
             lineChartWindow.Show();
+        }
+
+        private void ClasifyButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClasifyNewWindow win = new ClasifyNewWindow();
+            win.ShowDialog();
         }
     }
 }

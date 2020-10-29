@@ -1,0 +1,50 @@
+﻿<Window x:Class="SystemWspomaganiaDecyzji.ClasifyNewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemWspomaganiaDecyzji"
+        mc:Ignorable="d"
+        Title="ClasifyNewWindow" Height="250" Width="600">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Name="ClassifyColumnCombo" Margin="5" IsEditable="True" Text="-- K. decyzyjna --"></ComboBox>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+            <Label>Ilość sąsiadów:</Label>
+            <TextBox Name="NeighboursText" Margin="0,5,5,5" Width="30">1</TextBox>
+        </StackPanel>
+        <ComboBox Grid.Column="2" Name="MetricCombo" Margin="5" IsEditable="True" Text="-- Metryka --"/>
+        <Button Grid.Column="3" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ClassifyButton_Click" >Klasyfikuj</Button>
+        <Button Grid.Column="4" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" >Zapisz obiekt</Button>
+
+
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="7" x:Name="dataGrid"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False"  
+                      EnableRowVirtualization="True"
+                      EnableColumnVirtualization="True"
+                      SelectionUnit="Cell"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      LoadingRow="DataGrid_LoadingRow">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+    </Grid>
+</Window>
