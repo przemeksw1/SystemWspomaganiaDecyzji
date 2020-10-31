@@ -6,3 +6,6 @@
 *.suo
 /.vs
 /SystemWspomaganiaDecyzji/obj/Debug/netcoreapp3.1
+/SystemWspomaganiaDecyzji/bin/Debug/netcoreapp3.1/MojZapis.txt
+/SystemWspomaganiaDecyzji/bin/Debug/netcoreapp3.1/tmp.txt
+/SystemWspomaganiaDecyzji/bin/Debug/netcoreapp3.1/testowy.txt
