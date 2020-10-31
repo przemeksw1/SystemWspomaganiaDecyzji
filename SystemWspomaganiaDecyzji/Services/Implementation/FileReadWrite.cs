@@ -62,10 +62,51 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
             }          
         }
         // Jeszcze trzeba dokończyć albo inaczej zacząć na dobre
-        public void WriteToFile(string fileName, bool firstRowAsName)
+        public static void WriteToFile(string fileName, bool firstRowAsName)
         {
             AllRows allColumns = AllRows.GetInstance();
-            throw new NotImplementedException();
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+            StreamWriter sw = new StreamWriter(fileName);
+            string line = "";
+           
+            if (firstRowAsName)
+            {
+             
+                foreach (string header in allColumns.HeaderName)
+                {
+                    if(line == "")
+                    {
+                        line = header;
+                    }
+                    else
+                    {
+                        line = line + " ; " + header;
+                    }
+                    
+                }
+                sw.WriteLine(line);
+                line = "";
+            }
+                foreach (RowView rowView in allColumns.FullFile)
+                {
+                    foreach(string str in rowView.Value)
+                    {
+                    if (line == "")
+                    {
+                        line = str;
+                    }
+                    else
+                    {
+                        line = line + " ; " + str;
+                    }
+                }
+                    sw.WriteLine(line);
+                    line = "";
+                }
+            sw.Close();
         }
     }
 }

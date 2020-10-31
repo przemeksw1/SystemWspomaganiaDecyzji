@@ -167,6 +167,20 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveFileButton_Click(object sender, RoutedEventArgs e)
         {
+            //
+            //Można dodać coś aby sprawdzić itd i np. dać aby nazwe wpisać
+            //
+            SaveFileDialogs dialogs = new SaveFileDialogs("Podaj nazwe pliku", "");
+            if (dialogs.ShowDialog() == true)
+            {
+
+                string name = dialogs.Answer;
+                if (name == "")
+                    name = "tmp.txt";
+                else
+                    name = name + ".txt";
+                FileReadWrite.WriteToFile(name, firstRowHaveHeader);
+            }
         }
 
         private void SaveButton_Discret_Click(object sender, RoutedEventArgs e)
