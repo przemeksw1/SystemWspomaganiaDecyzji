@@ -27,7 +27,7 @@
         </StackPanel>
         <ComboBox Grid.Column="2" Name="MetricCombo" Margin="5" IsEditable="True" Text="-- Metryka --"/>
         <Button Grid.Column="3" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ClassifyButton_Click" >Klasyfikuj</Button>
-        <Button Grid.Column="4" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" >Zapisz obiekt</Button>
+        <Button Grid.Column="4" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveButton_Click">Zapisz obiekt</Button>
 
 
         <DataGrid Grid.Row="1" Grid.ColumnSpan="7" x:Name="dataGrid"

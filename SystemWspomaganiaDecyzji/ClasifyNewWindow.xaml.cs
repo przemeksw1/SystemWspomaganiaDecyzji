@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -69,6 +71,7 @@ namespace SystemWspomaganiaDecyzji
             MetricCombo.Items.Add(MetricName.Mahalanobis);
         }
 
+
         private void ClassifyButton_Click(object sender, RoutedEventArgs e)
         {
             bool IsError = false;
@@ -104,12 +107,19 @@ namespace SystemWspomaganiaDecyzji
             {
                 Classification classification = new Classification(k, Metric, NewObjects[0], DecisionColumn);
                 string decision = classification.Classify();
-                MessageBox.Show(decision);
+                //MessageBox.Show(decision);
+                NewObjects[0].Value[NewObjects[0].Value.Count - 1] = decision;
+                dataGrid.ItemsSource = null;                
+                dataGrid.ItemsSource = NewObjects;
+  
             }
 
+        }
 
-
-
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            AllRows.GetInstance().FullFile.Add(NewObjects[0]);
+            this.Close();
         }
     }
 }

@@ -296,6 +296,8 @@ namespace SystemWspomaganiaDecyzji
         {
             ClasifyNewWindow win = new ClasifyNewWindow();
             win.ShowDialog();
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = AllRows.GetInstance().FullFile;
         }
     }
 }
