@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Chart3DWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ClasifyNewWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +29,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Chart3DWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ClasifyNewWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

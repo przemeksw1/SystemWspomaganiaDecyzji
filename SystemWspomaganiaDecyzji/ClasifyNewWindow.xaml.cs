@@ -76,6 +76,7 @@ namespace SystemWspomaganiaDecyzji
         {
             bool IsError = false;
 
+            //jeżeli nie wybrano klasy decyzyjnej program domyślnie wybierze ostatnią kolumne
             if (ClassifyColumnCombo.SelectedItem == null)
                 DecisionColumn = AllRows.GetInstance().HeaderName.ToList().Count - 1;
             else DecisionColumn = ClassifyColumnCombo.SelectedIndex;
@@ -105,8 +106,8 @@ namespace SystemWspomaganiaDecyzji
 
             if(!IsError)
             {
-                Classification classification = new Classification(k, Metric, NewObjects[0], DecisionColumn);
-                string decision = classification.Classify();
+                Classification classificator = new Classification(k, Metric, DecisionColumn);
+                string decision = classificator.Classify(NewObjects[0]);
                 //MessageBox.Show(decision);
                 NewObjects[0].Value[NewObjects[0].Value.Count - 1] = decision;
                 dataGrid.ItemsSource = null;                

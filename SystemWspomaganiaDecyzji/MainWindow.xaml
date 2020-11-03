@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemWspomaganiaDecyzji"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="450" MinWidth="960" Height="450" Width="960">
+        Title="MainWindow" MinHeight="450" MinWidth="1060" Height="450" Width="1060">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -39,6 +39,7 @@
                     <Button Grid.Row="3" Height="25" Margin="0,5,5,5"  Background="#FFFFFBF0" Click="ClasifyButton_Click">Dodaj/Klasyfikuj</Button>
                 <Grid Grid.Column="1" Grid.RowSpan="4"  HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -115,40 +116,54 @@
                                 <Button Name="SaveButton_Percent" Width="50" Margin="0,18,0,0" Background="#FFFFFBF0" Click="SaveButton_Percent_Click">OK</Button>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Grid.Column="5" BorderThickness="1" BorderBrush="DarkGray">
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Wykresy" />
-                            </GroupBox.Header>
-                            <TabControl>
-                                <TabItem Header="2D" >
-                                    <StackPanel Background="AliceBlue">
-                                        <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
-                                        <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                        <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- K.Decyzyjna --"></ComboBox>
+                    <GroupBox Grid.Column="5" BorderThickness="1" BorderBrush="DarkGray">
+                        <GroupBox.Header>
+                            <Label FontWeight="Bold" Content="Wykresy" />
+                        </GroupBox.Header>
+                        <TabControl>
+                            <TabItem Header="2D" >
+                                <StackPanel Background="AliceBlue">
+                                    <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
+                                    <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                    <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- K.Decyzyjna --"></ComboBox>
                                     <Button Name="SaveButton_2D" Click="SaveButton_2D_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="3D" >
+                                <StackPanel Background="AliceBlue">
+                                    <ComboBox Name="Column1Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
+                                    <ComboBox Name="Column2Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                    <ComboBox Name="Column3Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 3 --"></ComboBox>
+                                    <Button Name="SaveButton_3D" Margin="5" Width="50" Background="#FFFFFBF0" Click="SaveButton_3D_Click">OK</Button>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="Histogram" >
+                                <StackPanel Background="AliceBlue">
+                                    <ComboBox Name="ColumnCombo_Histogram" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label>Ilość przedziałów:</Label>
+                                        <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
                                     </StackPanel>
-                                </TabItem>
-                                <TabItem Header="3D" >
-                                    <StackPanel Background="AliceBlue">
-                                        <ComboBox Name="Column1Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
-                                        <ComboBox Name="Column2Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                        <ComboBox Name="Column3Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 3 --"></ComboBox>
-                                        <Button Name="SaveButton_3D" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
-                                    </StackPanel>
-                                </TabItem>
-                                <TabItem Header="Histogram" >
-                                    <StackPanel Background="AliceBlue">
-                                        <ComboBox Name="ColumnCombo_Histogram" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label>Ilość przedziałów:</Label>
-                                            <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
-                                        </StackPanel>
-                                        <Button Name="SaveButton_Histogram" Click="SaveButton_Histogram_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
-                                    </StackPanel>
-                                </TabItem>
-                            </TabControl>
-                        </GroupBox>
-                    </Grid>
+                                    <Button Name="SaveButton_Histogram" Click="SaveButton_Histogram_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </GroupBox>
+                    <GroupBox Grid.Column="6" BorderThickness="1" BorderBrush="DarkGray">
+                        <GroupBox.Header>
+                            <Label FontWeight="Bold" Content="Jakość klasyfikacji" />
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <ComboBox Name="MetricCombo_Quality" Margin="5" IsEditable="True" Text="-- Metryka --"></ComboBox>
+                            <ComboBox Name="ClassifyColumnCombo_Quality" Margin="5" IsEditable="True" Text="-- K. decyzyjna --"></ComboBox>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Ilość sąsiadów:</Label>
+                                <TextBox Name="NeighboursText_Quality" Margin="0,5,5,5" Width="30">1</TextBox>
+                            </StackPanel>
+                            <Button Name="SaveButton_Quality" Width="50" Margin="0,34,0,0" Background="#FFFFFBF0" Click="SaveButton_Quality_Click">OK</Button>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
                 </Grid>
             </Grid>
 

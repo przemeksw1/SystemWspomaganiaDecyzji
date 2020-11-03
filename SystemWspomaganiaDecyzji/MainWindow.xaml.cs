@@ -32,6 +32,10 @@ namespace SystemWspomaganiaDecyzji
         public MainWindow()
         {
             InitializeComponent();
+            MetricCombo_Quality.Items.Add(MetricName.Euklides);
+            MetricCombo_Quality.Items.Add(MetricName.Manhattan);
+            MetricCombo_Quality.Items.Add(MetricName.Czebyszew);
+            MetricCombo_Quality.Items.Add(MetricName.Mahalanobis);
         }
      
         // Zaznaczanie całej kolumny
@@ -156,6 +160,8 @@ namespace SystemWspomaganiaDecyzji
             Column3Combo_2D.ItemsSource = new List<string>();
             Column3Combo_2D.Text = "-- K.Decyzyjna --";
             Column3Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
+            ClassifyColumnCombo_Quality.Text = "-- K.Decyzyjna --";
+            ClassifyColumnCombo_Quality.ItemsSource = AllRows.GetInstance().HeaderName;
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -298,6 +304,42 @@ namespace SystemWspomaganiaDecyzji
             win.ShowDialog();
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = AllRows.GetInstance().FullFile;
+        }
+
+        private void SaveButton_3D_Click(object sender, RoutedEventArgs e)
+        {
+            Chart3DWindow win = new Chart3DWindow();
+            win.Show();
+        }
+
+        private void SaveButton_Quality_Click(object sender, RoutedEventArgs e)
+        {
+            bool IsError = false;
+            int decisionColumn = AllRows.GetInstance().HeaderName.ToList().Count - 1; //jeżeli nie wybrano klasy decyzyjnej program domyślnie wybierze ostatnią kolumne
+            MetricName metric = MetricName.Euklides;
+            int k;
+            decimal quality=0;
+            
+            if (ClassifyColumnCombo_Quality.SelectedItem == null)
+                decisionColumn = ClassifyColumnCombo_Quality.SelectedIndex;
+            if (MetricCombo_Quality.SelectedItem != null)
+                metric = (MetricName)MetricCombo_Quality.SelectedItem;
+            k = Convert.ToInt32(NeighboursText_Quality.Text);
+            if (k > AllRows.GetInstance().FullFile.Count)
+            {
+                MessageBox.Show("Liczba sasiadow nie moze byc wieksza od ilosci obiektow w zbiorze");
+                IsError = true;
+            }
+
+            if (!IsError)
+            {
+                Classification classificator = new Classification(k, metric, decisionColumn);
+                quality = classificator.GetClassificationQuality();
+            }
+
+            MessageBox.Show("Jakosc klasyfikatora k-nn dla metryki '" + metric + "' i k=" + k + " wynosi:\nQUALITY=" + quality);
+
+            
         }
     }
 }

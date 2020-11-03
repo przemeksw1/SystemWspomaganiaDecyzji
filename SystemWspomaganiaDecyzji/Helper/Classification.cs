@@ -15,16 +15,16 @@ namespace SystemWspomaganiaDecyzji.Helper
         RowView NewObject;
         int DecisionColNumber;
 
-        public Classification(int k, MetricName metric, RowView newObject, int decisionColNumber)
+        public Classification(int k, MetricName metric, int decisionColNumber)
         {
             NeighboursCount = k;
             Metric = metric;
-            NewObject = newObject;
             DecisionColNumber = decisionColNumber;
         }
 
-        public string Classify()
+        public string Classify(RowView newObject)
         {
+            NewObject = newObject;
             Dictionary<int, double> results = new Dictionary<int, double>();
             //List<double> results = new List<double>();
             List<RowView> neighbours = new List<RowView>();
@@ -87,7 +87,24 @@ namespace SystemWspomaganiaDecyzji.Helper
             return finalDecision;
         }
 
+        public decimal GetClassificationQuality()
+        {
+            List<bool> results = new List<bool>();
+            string classifyResult;
+            decimal correctCount;
+            decimal quality;
 
+            foreach (RowView row in AllRows.GetInstance().FullFile)
+            {
+                classifyResult = Classify(row);
+                if (classifyResult == row.Value[DecisionColNumber]) results.Add(true);
+                else results.Add(false);
+            }
+
+            correctCount = results.Where(x => x == true).ToList().Count();
+            quality = correctCount / results.Count();
+            return quality;
+        }
 
     }
 }
