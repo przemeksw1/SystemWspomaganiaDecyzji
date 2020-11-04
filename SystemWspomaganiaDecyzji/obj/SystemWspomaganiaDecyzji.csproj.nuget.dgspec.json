@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
+    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
+    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "projectUniqueName": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
         "projectName": "SystemWspomaganiaDecyzji",
-        "projectPath": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
-        "packagesPath": "C:\\Users\\PRZEMEK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
+        "projectPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "packagesPath": "C:\\Users\\Kasia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\PRZEMEK\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Kasia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
