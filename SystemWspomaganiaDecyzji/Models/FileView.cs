@@ -13,6 +13,7 @@ namespace SystemWspomaganiaDecyzji.Models
         private AllRows()
         {
             FullFile = new List<RowView>();
+            HeaderName = new List<string>();
         }
         public static void ClearFullFile()
         {

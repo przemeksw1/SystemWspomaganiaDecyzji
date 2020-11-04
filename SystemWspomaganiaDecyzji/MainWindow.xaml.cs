@@ -325,7 +325,10 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveButton_3D_Click(object sender, RoutedEventArgs e)
         {
-            Chart3DWindow win = new Chart3DWindow();
+            int axisX = Column1Combo_3D.SelectedIndex;
+            int axisY = Column2Combo_3D.SelectedIndex;
+            int axisZ = Column3Combo_3D.SelectedIndex;
+            Chart3DWindow win = new Chart3DWindow(axisX, axisY, axisZ);
             win.Show();
         }
 

@@ -14,8 +14,13 @@
     <PackageReference Include="Accord" Version="3.8.0" />
     <PackageReference Include="Accord.Math" Version="3.8.0" />
     <PackageReference Include="Accord.Statistics" Version="3.8.0" />
+    <PackageReference Include="HelixToolkit.Core.Wpf" Version="2.13.1" />
     <PackageReference Include="LiveCharts" Version="0.9.7" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+    <PackageReference Include="SciChart" Version="6.2.1.13304" />
+    <PackageReference Include="SciChart.DirectX" Version="6.2.1.13304" />
+    <PackageReference Include="SciChart.ExternalDependencies" Version="6.2.1.13304" />
+    <PackageReference Include="SciChart3D" Version="6.2.1.13304" />
   </ItemGroup>
 
   <ItemGroup>

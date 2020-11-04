@@ -4,6 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)scichart.directx\6.2.1.13304\build\SciChart.DirectX.targets" Condition="Exists('$(NuGetPackageRoot)scichart.directx\6.2.1.13304\build\SciChart.DirectX.targets')" />
     <Import Project="$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets" Condition="Exists('$(NuGetPackageRoot)accord\3.8.0\build\Accord.targets')" />
   </ImportGroup>
 </Project>

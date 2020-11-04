@@ -1,25 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
+    "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
+    "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "projectUniqueName": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
         "projectName": "SystemWspomaganiaDecyzji",
-        "projectPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
-        "packagesPath": "C:\\Users\\Kasia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
+        "projectPath": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
+        "packagesPath": "C:\\Users\\PRZEMEK\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PRZEMEK\\source\\repos\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kasia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\PRZEMEK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -54,6 +53,10 @@
               "target": "Package",
               "version": "[3.8.0, )"
             },
+            "HelixToolkit.Core.Wpf": {
+              "target": "Package",
+              "version": "[2.13.1, )"
+            },
             "LiveCharts": {
               "target": "Package",
               "version": "[0.9.7, )"
@@ -61,6 +64,22 @@
             "LiveCharts.Wpf.NetCore3": {
               "target": "Package",
               "version": "[0.9.7, )"
+            },
+            "SciChart": {
+              "target": "Package",
+              "version": "[6.2.1.13304, )"
+            },
+            "SciChart.DirectX": {
+              "target": "Package",
+              "version": "[6.2.1.13304, )"
+            },
+            "SciChart.ExternalDependencies": {
+              "target": "Package",
+              "version": "[6.2.1.13304, )"
+            },
+            "SciChart3D": {
+              "target": "Package",
+              "version": "[6.2.1.13304, )"
             }
           },
           "imports": [
