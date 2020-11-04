@@ -231,12 +231,12 @@ namespace SystemWspomaganiaDecyzji
                 {
                     case 0:
                         {
-                            TextToNumeric.AlfabeticTextToNumber(numOfColumn);
+                            TextToNumeric.OrderTextToNumber(numOfColumn);
                         }
                         break;
                     case 1:
                         {
-                            TextToNumeric.OrderTextToNumber(numOfColumn);
+                            TextToNumeric.AlfabeticTextToNumber(numOfColumn);
                         }
                         break;
                     default:
