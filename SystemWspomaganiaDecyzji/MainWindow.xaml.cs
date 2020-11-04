@@ -36,6 +36,7 @@ namespace SystemWspomaganiaDecyzji
             MetricCombo_Quality.Items.Add(MetricName.Manhattan);
             MetricCombo_Quality.Items.Add(MetricName.Czebyszew);
             MetricCombo_Quality.Items.Add(MetricName.Mahalanobis);
+            ButtonsEnabledChange(false);
         }
      
         // Zaznaczanie całej kolumny
@@ -76,6 +77,7 @@ namespace SystemWspomaganiaDecyzji
                 }                 
 
                 await HeavyMethod(filePath);
+                ButtonsEnabledChange(true);
             }                       
         }
         private async Task HeavyMethod(string filePath)
@@ -120,6 +122,21 @@ namespace SystemWspomaganiaDecyzji
             column.Header = allColumns.HeaderName[columnNumber];
             dataGrid.Columns.Insert(columnNumber,column);            
             ComboBoxFill();
+        }
+
+        private void ButtonsEnabledChange(bool type)
+        {
+            SaveFileButton.IsEnabled = type;
+            ClasifyButton.IsEnabled = type;
+            SaveButton_Numeric.IsEnabled = type;
+            SaveButton_Normal.IsEnabled = type;
+            SaveButton_Discret.IsEnabled = type;
+            SaveButton_Intervals.IsEnabled = type;
+            SaveButton_Percent.IsEnabled = type;
+            SaveButton_2D.IsEnabled = type;
+            SaveButton_3D.IsEnabled = type;
+            SaveButton_Histogram.IsEnabled = type;
+            SaveButton_Quality.IsEnabled = type;
         }
 
         private void ComboBoxFill()
@@ -335,10 +352,8 @@ namespace SystemWspomaganiaDecyzji
             {
                 Classification classificator = new Classification(k, metric, decisionColumn);
                 quality = classificator.GetClassificationQuality();
+                MessageBox.Show("Jakosc klasyfikatora k-nn dla metryki '" + metric + "' i k=" + k + " wynosi:\nQUALITY=" + quality);
             }
-
-            MessageBox.Show("Jakosc klasyfikatora k-nn dla metryki '" + metric + "' i k=" + k + " wynosi:\nQUALITY=" + quality);
-
             
         }
     }

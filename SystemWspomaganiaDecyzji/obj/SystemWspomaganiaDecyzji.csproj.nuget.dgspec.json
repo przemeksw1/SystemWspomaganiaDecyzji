@@ -42,6 +42,18 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Accord": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Math": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Statistics": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
             "LiveCharts": {
               "target": "Package",
               "version": "[0.9.7, )"

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
@@ -110,9 +111,9 @@ namespace SystemWspomaganiaDecyzji
                 string decision = classificator.Classify(NewObjects[0]);
                 //MessageBox.Show(decision);
                 NewObjects[0].Value[NewObjects[0].Value.Count - 1] = decision;
-                dataGrid.ItemsSource = null;                
+                dataGrid.ItemsSource = null;
+                //Thread.Sleep(1000);
                 dataGrid.ItemsSource = NewObjects;
-  
             }
 
         }

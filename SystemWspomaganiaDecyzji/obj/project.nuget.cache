@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8dr+0mYzGw/VYs2ozQ1z+EeMYv+Xn6+k4XP48QckdBTogFPhty312O4xL5bkAWEEgxgpYLVUFN09H7FKXq3m9Q==",
+  "dgSpecHash": "F3EWNJ7wvwvv0OXMvdjFv1qglcWNeYLlc780pFykNf+F0Bx442tBQcdHJJcLE9jLG935uZtKXKjQYbQsw3KfVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kasia\\Desktop\\STUDIA_MATERIAŁY\\SEMESTR II\\SWD\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji\\SystemWspomaganiaDecyzji.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Kasia\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\Kasia\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\Kasia\\.nuget\\packages\\accord.statistics\\3.8.0\\accord.statistics.3.8.0.nupkg.sha512",
     "C:\\Users\\Kasia\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\Kasia\\.nuget\\packages\\livecharts.wpf.netcore3\\0.9.7\\livecharts.wpf.netcore3.0.9.7.nupkg.sha512",
     "C:\\Users\\Kasia\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512"

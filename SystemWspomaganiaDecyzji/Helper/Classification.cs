@@ -49,8 +49,11 @@ namespace SystemWspomaganiaDecyzji.Helper
                 case MetricName.Czebyszew:
                     results = ClasificationMetrics.Czebyszew(NewObject, AllRows.GetInstance().FullFile);
                     break;
+                case MetricName.Mahalanobis:
+                    results = ClasificationMetrics.Mahalanobis(NewObject, AllRows.GetInstance().FullFile);
+                    break;
                 default:
-                    //results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
                     break;
             }
 
