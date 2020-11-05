@@ -95,9 +95,9 @@ namespace SystemWspomaganiaDecyzji
 
             }
 
-            for(int i=0; i<NewObjects[0].Value.Count-1; i++)
+            for(int i=0; i<NewObjects[0].Value.Count; i++)
             {
-                if(NewObjects[0].Value[i]=="")
+                if(NewObjects[0].Value[i]=="" && i!=DecisionColumn)
                 {
                     MessageBox.Show("Uzupelnij wszystkie pola aby kontynuowac");
                     IsError = true;
@@ -110,7 +110,7 @@ namespace SystemWspomaganiaDecyzji
                 Classification classificator = new Classification(k, Metric, DecisionColumn);
                 string decision = classificator.Classify(NewObjects[0]);
                 //MessageBox.Show(decision);
-                NewObjects[0].Value[NewObjects[0].Value.Count - 1] = decision;
+                NewObjects[0].Value[DecisionColumn] = decision;
                 dataGrid.ItemsSource = null;
                 //Thread.Sleep(1000);
                 dataGrid.ItemsSource = NewObjects;

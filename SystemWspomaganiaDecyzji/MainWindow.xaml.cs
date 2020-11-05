@@ -85,7 +85,9 @@ namespace SystemWspomaganiaDecyzji
             FileReadWrite fileReadWrite = new FileReadWrite();
             fileReadWrite.ReadFileFromPath(filePath, firstRowHaveHeader);
             AllRows allColumns = AllRows.GetInstance();
-           
+            dataGrid.Columns.Clear();
+            dataGrid.ItemsSource = null;
+
             for (int i = 0; i < allColumns.FullFile[0].Value.Count; i++)
             {
                 Binding binding = new Binding(String.Format("Value[{0}]", i)); 
@@ -200,6 +202,7 @@ namespace SystemWspomaganiaDecyzji
             Column3Combo_2D.ItemsSource = new List<string>();
             Column3Combo_2D.Text = "-- K.Decyzyjna --";
             Column3Combo_2D.ItemsSource = AllRows.GetInstance().HeaderName;
+            ClassifyColumnCombo_Quality.ItemsSource = new List<string>();
             ClassifyColumnCombo_Quality.Text = "-- K.Decyzyjna --";
             ClassifyColumnCombo_Quality.ItemsSource = AllRows.GetInstance().HeaderName;
         }
@@ -363,7 +366,7 @@ namespace SystemWspomaganiaDecyzji
             int k;
             decimal quality=0;
             
-            if (ClassifyColumnCombo_Quality.SelectedItem == null)
+            if (ClassifyColumnCombo_Quality.SelectedItem != null)
                 decisionColumn = ClassifyColumnCombo_Quality.SelectedIndex;
             if (MetricCombo_Quality.SelectedItem != null)
                 metric = (MetricName)MetricCombo_Quality.SelectedItem;

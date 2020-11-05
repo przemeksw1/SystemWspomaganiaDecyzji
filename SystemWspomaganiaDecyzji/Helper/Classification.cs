@@ -41,19 +41,19 @@ namespace SystemWspomaganiaDecyzji.Helper
             switch (Metric)
             {
                 case MetricName.Euklides:
-                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
                     break;
                 case MetricName.Manhattan:
-                    results = ClasificationMetrics.Manhatan(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Manhatan(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
                     break;
                 case MetricName.Czebyszew:
-                    results = ClasificationMetrics.Czebyszew(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Czebyszew(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
                     break;
                 case MetricName.Mahalanobis:
-                    results = ClasificationMetrics.Mahalanobis(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Mahalanobis(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
                     break;
                 default:
-                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile);
+                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
                     break;
             }
 

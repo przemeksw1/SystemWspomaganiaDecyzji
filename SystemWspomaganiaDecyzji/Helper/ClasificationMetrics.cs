@@ -20,7 +20,7 @@ namespace SystemWspomaganiaDecyzji.Helper
 
     public static class ClasificationMetrics
     {
-        public static Dictionary<int, double> Euklides(RowView newRow, List<RowView> allRows)
+        public static Dictionary<int, double> Euklides(RowView newRow, List<RowView> allRows, int decisionColumn)
         {
             double sum = 0;
             double pow = 0;
@@ -31,13 +31,16 @@ namespace SystemWspomaganiaDecyzji.Helper
             int rowId = 0;
             foreach (var row in allRows)
             {
-                for(int i=0; i<newRow.Value.Count-1 ; i++)
+                for(int i=0; i<newRow.Value.Count ; i++)
                 {
-                    value = Convert.ToDouble(row.Value[i]);
-                    newValue = Convert.ToDouble(newRow.Value[i]);
-                    pow = value - newValue;
-                    pow = Math.Pow(pow, 2);
-                    sum += pow;
+                    if (i != decisionColumn)
+                    {
+                        value = Convert.ToDouble(row.Value[i]);
+                        newValue = Convert.ToDouble(newRow.Value[i]);
+                        pow = value - newValue;
+                        pow = Math.Pow(pow, 2);
+                        sum += pow;
+                    }
                 }
                 sum = Math.Sqrt(sum);
                 results.Add(rowId, sum);
@@ -49,7 +52,7 @@ namespace SystemWspomaganiaDecyzji.Helper
             return results;
         }
 
-        public static Dictionary<int, double> Manhatan(RowView newRow, List<RowView> allRows)
+        public static Dictionary<int, double> Manhatan(RowView newRow, List<RowView> allRows, int decisionColumn)
         {
             double sum = 0;
             double mod = 0;
@@ -60,13 +63,16 @@ namespace SystemWspomaganiaDecyzji.Helper
             int rowId = 0;
             foreach (var row in allRows)
             {
-                for (int i = 0; i < newRow.Value.Count - 1; i++)
+                for (int i = 0; i < newRow.Value.Count; i++)
                 {
-                    value = Convert.ToDouble(row.Value[i]);
-                    newValue = Convert.ToDouble(newRow.Value[i]);
-                    mod = value - newValue;
-                    mod = Math.Abs(mod);
-                    sum += mod;
+                    if (i != decisionColumn)
+                    {
+                        value = Convert.ToDouble(row.Value[i]);
+                        newValue = Convert.ToDouble(newRow.Value[i]);
+                        mod = value - newValue;
+                        mod = Math.Abs(mod);
+                        sum += mod;
+                    }
                 }
                 results.Add(rowId, sum);
                 sum = 0;
@@ -77,7 +83,7 @@ namespace SystemWspomaganiaDecyzji.Helper
             return results;
         }
 
-        public static Dictionary<int, double> Czebyszew(RowView newRow, List<RowView> allRows)
+        public static Dictionary<int, double> Czebyszew(RowView newRow, List<RowView> allRows, int decisionColumn)
         {
             double max = 0;
             double mod = 0;
@@ -88,13 +94,16 @@ namespace SystemWspomaganiaDecyzji.Helper
             int rowId = 0;
             foreach (var row in allRows)
             {
-                for (int i = 0; i < newRow.Value.Count - 1; i++)
+                for (int i = 0; i < newRow.Value.Count; i++)
                 {
-                    value = Convert.ToDouble(row.Value[i]);
-                    newValue = Convert.ToDouble(newRow.Value[i]);
-                    mod = value - newValue;
-                    mod = Math.Abs(mod);
-                    max = Math.Max(max, mod);
+                    if (i != decisionColumn)
+                    {
+                        value = Convert.ToDouble(row.Value[i]);
+                        newValue = Convert.ToDouble(newRow.Value[i]);
+                        mod = value - newValue;
+                        mod = Math.Abs(mod);
+                        max = Math.Max(max, mod);
+                    }
                 }
                 results.Add(rowId, max);
                 max = 0;
@@ -105,7 +114,7 @@ namespace SystemWspomaganiaDecyzji.Helper
             return results;
         }
 
-        public static Dictionary<int, double> Mahalanobis(RowView newRow, List<RowView> allRows)
+        public static Dictionary<int, double> Mahalanobis(RowView newRow, List<RowView> allRows, int decisionColumn)
         {
             Dictionary<int, double> results = new Dictionary<int, double>();
             double value;
@@ -121,8 +130,11 @@ namespace SystemWspomaganiaDecyzji.Helper
             //stowrzenie macierzy danych do obliczenia macierzy kowariancji
             for (int i=0; i<allRows.Count; i++)
             {
-                for (int j = 0; j < allRows[i].Value.Count-1; j++)
-                    matrix[i, j] = Convert.ToDouble(allRows[i].Value[j]);
+                for (int j = 0, listj = 0; j < allRows[i].Value.Count-1; j++, listj++)
+                {
+                    if (listj == decisionColumn) listj++;
+                    matrix[i, j] = Convert.ToDouble(allRows[i].Value[listj]);
+                }
             }
             //obliczanie macierzy kowariancji i jej odwrotności
             covMatrix = Measures.Covariance(matrix);
@@ -134,10 +146,11 @@ namespace SystemWspomaganiaDecyzji.Helper
                 vectorTimesMatrix = new List<double>();
 
                 //obliczanie wektora (x-y)
-                for (int i = 0; i < newRow.Value.Count - 1; i++)
+                for (int i = 0, listi=0; i < newRow.Value.Count-1; i++, listi++)
                 {
-                    value = Convert.ToDouble(row.Value[i]);
-                    newValue = Convert.ToDouble(newRow.Value[i]);
+                    if (listi == decisionColumn) listi++;
+                    value = Convert.ToDouble(row.Value[listi]);
+                    newValue = Convert.ToDouble(newRow.Value[listi]);
                     vector[i] = value - newValue;
                 }
 

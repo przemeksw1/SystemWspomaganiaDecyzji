@@ -17,16 +17,17 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
             decimal deviation = MathHelper.CalcStandardDeviation(AllRows.GetInstance().FullFile, numOfColumn);
             decimal result = 0;
             decimal value = 0;
-            decimal testAvg = 0; //zmienna do testowania wyniku - dla danych poprawnie znormalizowanych średnia=0
+            //decimal testAvg = 0; //zmienna do testowania wyniku - dla danych poprawnie znormalizowanych średnia=0
             for (int i = 0; i < AllRows.GetInstance().FullFile.Count; i++)
             {
                 value = Convert.ToDecimal(AllRows.GetInstance().FullFile[i].Value[numOfColumn]);
                 result = (value - avg) / deviation;
-                testAvg += result;
+                //testAvg += result;
+                result = Math.Round(result, 3);
                 cell = result.ToString();
                 AllRows.GetInstance().FullFile[i].Value.Insert(numOfColumn + 1, cell);
             }
-            testAvg /= AllRows.GetInstance().FullFile.Count;
+            //testAvg /= AllRows.GetInstance().FullFile.Count; //dla danych poprawnie znormalizowanych wynik=0
         }
     }
 }
