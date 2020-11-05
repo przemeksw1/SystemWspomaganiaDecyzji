@@ -111,17 +111,40 @@ namespace SystemWspomaganiaDecyzji
         private void DisplayNewDataInMenu(int columnNumber)
         {
             AllRows allColumns = AllRows.GetInstance();
-            Binding binding = new Binding(String.Format("Value[{0}]", columnNumber)); 
-            DataGridTextColumn column = new DataGridTextColumn();
+            dataGrid.Columns.Clear();
 
-            //binding.Converter = new PricesConverter();
-            binding.Mode = BindingMode.TwoWay;
-            binding.ValidatesOnDataErrors = true;
-            column.Binding = binding;
-            column.CanUserSort = false;
-            column.Header = allColumns.HeaderName[columnNumber];
-            dataGrid.Columns.Insert(columnNumber,column);            
+            for (int i = 0; i < allColumns.FullFile[0].Value.Count; i++)
+            {
+                Binding binding = new Binding(String.Format("Value[{0}]", i));
+                DataGridTextColumn column = new DataGridTextColumn();
+                //binding.Converter = new PricesConverter();
+                binding.Mode = BindingMode.TwoWay;
+                binding.ValidatesOnDataErrors = true;
+                column.Binding = binding;
+                column.CanUserSort = false;
+                column.Header = allColumns.HeaderName[i];
+                dataGrid.Columns.Add(column);
+            }
+            dataGrid.ItemsSource = allColumns.FullFile;
             ComboBoxFill();
+
+
+
+            //AllRows allColumns = AllRows.GetInstance();
+            //Binding binding = new Binding(String.Format("Value[{0}]", columnNumber)); 
+            //DataGridTextColumn column = new DataGridTextColumn();
+
+            ////binding.Converter = new PricesConverter();
+            //binding.Mode = BindingMode.TwoWay;
+            //binding.ValidatesOnDataErrors = true;
+            //column.Binding = binding;
+            //column.CanUserSort = false;
+            //column.Header = allColumns.HeaderName[columnNumber];
+            //dataGrid.Columns.Insert(columnNumber,column);
+            //dataGrid.ItemsSource = null;
+            //dataGrid.ItemsSource = AllRows.GetInstance().FullFile;
+            //ComboBoxFill();
+            //dataGrid.Items.Refresh();
         }
 
         private void ButtonsEnabledChange(bool type)
