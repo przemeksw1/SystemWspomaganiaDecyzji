@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using SystemWspomaganiaDecyzji.Models;
 
@@ -14,7 +15,9 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
         {
             AllRows.ClearFullFile();
             AllRows allColumns = AllRows.GetInstance();
-            
+
+            Regex regex = new Regex(@"^-?[0-9]*.[0-9]+$");
+
             char[] delimiters = new[] { ' ', ';', '\t' };
             string line;
             string[] splitLine;
@@ -40,7 +43,8 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                             RowView column = new RowView();
                             allColumns.HeaderName = new List<string>();
                             for (int i = 0; i < splitLine.Length; i++)
-                            {                                
+                            {
+                                if (regex.IsMatch(splitLine[i])) splitLine[i] = CovertDotToComma(splitLine[i]);
                                 column.Value.Add(splitLine[i]);
                                 allColumns.HeaderName.Add("Kolumna__" + (i+1));
                             }
@@ -52,6 +56,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                             for (int i = 0; i < splitLine.Length; i++)
                             {
                                 //List<string> column = new List<string>();
+                                if (regex.IsMatch(splitLine[i])) splitLine[i] = CovertDotToComma(splitLine[i]);
                                 column.Value.Add(splitLine[i]);
 
                             }
@@ -83,7 +88,7 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                     }
                     else
                     {
-                        line = line + " ; " + header;
+                        line = line + ";" + header;
                     }
                     
                 }
@@ -100,13 +105,43 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
                     }
                     else
                     {
-                        line = line + " ; " + str;
+                        line = line + ";" + str;
                     }
                 }
                     sw.WriteLine(line);
                     line = "";
                 }
             sw.Close();
+        }
+
+        //zapisywanie jednokolumnowej listy decimal i indexami
+        public static void WriteToFileDecimalList(string fileName, List<decimal> list)
+        {
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+            StreamWriter sw = new StreamWriter(fileName);
+            string line = "";
+
+            for (int k=0; k<list.Count; k++)
+            {
+                line = k+1 + ";" + list[k];
+                sw.WriteLine(line);
+                line = "";
+            }
+            sw.Close();
+        }
+
+        public static string CovertDotToComma(string word)
+        {
+            string result = "";
+            for(int i=0; i<word.Length; i++)
+            {
+                if (word[i] == '.') result += ',';
+                else result += word[i];
+            }
+            return result;
         }
     }
 }

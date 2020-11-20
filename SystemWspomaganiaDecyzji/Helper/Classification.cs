@@ -33,27 +33,29 @@ namespace SystemWspomaganiaDecyzji.Helper
             Dictionary<string, int> decisionsCounter = new Dictionary<string, int>();
             int objectID;
             string decisionValue;
-            double minDistance=0;
-            string minResult="";
+            Dictionary<string, double> minDistance = new Dictionary<string, double>();
+            double finalResult;
             string finalDecision = "";
+
+            List<RowView> allRows = AllRows.GetInstance().FullFile;
 
             //wybór metryki do zliczenia odleglosci miedzy wszystkimi obiektami
             switch (Metric)
             {
                 case MetricName.Euklides:
-                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
+                    results = ClasificationMetrics.Euklides(NewObject, allRows, DecisionColNumber);
                     break;
                 case MetricName.Manhattan:
-                    results = ClasificationMetrics.Manhatan(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
+                    results = ClasificationMetrics.Manhatan(NewObject, allRows, DecisionColNumber);
                     break;
                 case MetricName.Czebyszew:
-                    results = ClasificationMetrics.Czebyszew(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
+                    results = ClasificationMetrics.Czebyszew(NewObject, allRows, DecisionColNumber);
                     break;
                 case MetricName.Mahalanobis:
-                    results = ClasificationMetrics.Mahalanobis(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
+                    results = ClasificationMetrics.Mahalanobis(NewObject, allRows, DecisionColNumber);
                     break;
                 default:
-                    results = ClasificationMetrics.Euklides(NewObject, AllRows.GetInstance().FullFile, DecisionColNumber);
+                    results = ClasificationMetrics.Euklides(NewObject, allRows, DecisionColNumber);
                     break;
             }
 
@@ -62,11 +64,22 @@ namespace SystemWspomaganiaDecyzji.Helper
             for (int k=0; k<NeighboursCount; k++)
             {
                 objectID = sortedResults.ElementAt(k).Key;
-                neighbours.Add(AllRows.GetInstance().FullFile[objectID]);
-                if (sortedResults.ElementAt(k).Value < minDistance || k==0)
+                neighbours.Add(allRows[objectID]);
+                string tempDecision = neighbours[k].Value[DecisionColNumber];
+                if (minDistance.Where(c => c.Key == tempDecision).ToList().Count > 0)
                 {
-                    minDistance = sortedResults.ElementAt(k).Value;
-                    minResult = neighbours[k].Value[DecisionColNumber];
+                    double tempMinResult = minDistance.Where(c => c.Key == tempDecision).First().Value;
+                    if (sortedResults.ElementAt(k).Value < tempMinResult)
+                    {
+                        minDistance.Remove(tempDecision);
+                        tempMinResult = sortedResults.ElementAt(k).Value;
+                        minDistance.Add(tempDecision, tempMinResult);
+                    }
+                }
+                else
+                {
+                    double tempMinResult = sortedResults.ElementAt(k).Value;
+                    minDistance.Add(tempDecision, tempMinResult);
                 }
             }
 
@@ -82,9 +95,16 @@ namespace SystemWspomaganiaDecyzji.Helper
                 }
             }
             decisionsCounter = decisionsCounter.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            int distance = decisionsCounter.ElementAt(0).Value;
-            if (decisionsCounter.Where(x => x.Value == distance).ToList().Count > 1)
-                finalDecision = minResult;
+            int neighboursCount = decisionsCounter.ElementAt(0).Value;
+            if (decisionsCounter.Where(x => x.Value == neighboursCount).ToList().Count > 1)
+            {            
+                foreach(var val in minDistance)
+                {
+                    if (decisionsCounter.Where(x => x.Key == val.Key && x.Value == neighboursCount).ToList().Count == 0)
+                        minDistance.Remove(val.Key);
+                }
+                finalDecision = minDistance.Where(c => c.Value == minDistance.Min(x => x.Value)).First().Key;
+            }
             else finalDecision = decisionsCounter.ElementAt(0).Key;
 
             return finalDecision;
@@ -97,9 +117,14 @@ namespace SystemWspomaganiaDecyzji.Helper
             decimal correctCount;
             decimal quality;
 
-            foreach (RowView row in AllRows.GetInstance().FullFile)
+            for (int rowID = 0; rowID < AllRows.GetInstance().FullFile.Count; rowID++)
             {
+                var row = AllRows.GetInstance().FullFile[rowID];
+                AllRows.GetInstance().FullFile.Remove(row);
+                List<RowView> rows = AllRows.GetInstance().FullFile;
                 classifyResult = Classify(row);
+                AllRows.GetInstance().FullFile.Insert(rowID, row);
+                List<RowView> rows1 = AllRows.GetInstance().FullFile;
                 if (classifyResult == row.Value[DecisionColNumber]) results.Add(true);
                 else results.Add(false);
             }
@@ -107,6 +132,18 @@ namespace SystemWspomaganiaDecyzji.Helper
             correctCount = results.Where(x => x == true).ToList().Count();
             quality = correctCount / results.Count();
             return quality;
+        }
+
+        public List<decimal> GetClassificationQualityForAllNeighbours()
+        {
+            List<decimal> qualities = new List<decimal>();
+            int maxK = AllRows.GetInstance().FullFile.Count-1;
+            for (int k=1; k<=maxK; k++)
+            {
+                NeighboursCount = k;
+                qualities.Add(GetClassificationQuality());
+            }
+            return qualities;
         }
 
     }

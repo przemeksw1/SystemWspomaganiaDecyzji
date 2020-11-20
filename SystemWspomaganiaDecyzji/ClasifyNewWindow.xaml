@@ -26,7 +26,7 @@
             <TextBox Name="NeighboursText" Margin="0,5,5,5" Width="30">1</TextBox>
         </StackPanel>
         <ComboBox Grid.Column="2" Name="MetricCombo" Margin="5" IsEditable="True" Text="-- Metryka --"/>
-        <Button Grid.Column="3" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ClassifyButton_Click" >Klasyfikuj</Button>
+        <Button Grid.Column="3" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ClassifyButton_Click" >Klasyfikuj k-nn</Button>
         <Button Grid.Column="4" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveButton_Click">Zapisz obiekt</Button>
 
 

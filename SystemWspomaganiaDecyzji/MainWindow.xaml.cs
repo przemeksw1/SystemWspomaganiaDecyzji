@@ -216,19 +216,25 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveFileButton_Click(object sender, RoutedEventArgs e)
         {
-            //
-            //Można dodać coś aby sprawdzić itd i np. dać aby nazwe wpisać
-            //
-            SaveFileDialogs dialogs = new SaveFileDialogs("Podaj nazwe pliku", "");
-            if (dialogs.ShowDialog() == true)
-            {
+            //SaveFileDialogs dialogs = new SaveFileDialogs("Podaj nazwe pliku", "");
+            //if (dialogs.ShowDialog() == true)
+            //{
 
-                string name = dialogs.Answer;
-                if (name == "")
-                    name = "tmp.txt";
-                else
-                    name = name + ".txt";
-                FileReadWrite.WriteToFile(name, firstRowHaveHeader);
+            //    string name = dialogs.Answer;
+            //    if (name == "")
+            //        name = "tmp.txt";
+            //    else
+            //        name = name + ".txt";
+            //    FileReadWrite.WriteToFile(name, firstRowHaveHeader);
+            //}
+
+            string filePath;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "txt files (*.txt)|*.txt";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                filePath = saveFileDialog.FileName.ToString();
+                FileReadWrite.WriteToFile(filePath, firstRowHaveHeader);
             }
         }
 
@@ -327,17 +333,10 @@ namespace SystemWspomaganiaDecyzji
         {
             int axisX = Column1Combo_2D.SelectedIndex;
             int axisY = Column2Combo_2D.SelectedIndex;
-            int decisionClass;
-            try
-            {
-                Column3Combo_2D.SelectedItem.ToString();
-                decisionClass = Column3Combo_2D.SelectedIndex;
-            }
-            catch
-            {
-                decisionClass = -1;
-            }
-            LineChartWindow lineChartWindow = new LineChartWindow(axisX, axisY, decisionClass);
+            int decisionColumn = - 1; //jeżeli nie wybrano klasy decyzyjnej program domyślnie wyswietli wykres bez grupowania
+            if (Column3Combo_2D.SelectedItem != null)
+                decisionColumn = Column3Combo_2D.SelectedIndex;
+            LineChartWindow lineChartWindow = new LineChartWindow(axisX, axisY, decisionColumn);
             lineChartWindow.Show();
         }
 
@@ -370,20 +369,59 @@ namespace SystemWspomaganiaDecyzji
                 decisionColumn = ClassifyColumnCombo_Quality.SelectedIndex;
             if (MetricCombo_Quality.SelectedItem != null)
                 metric = (MetricName)MetricCombo_Quality.SelectedItem;
-            k = Convert.ToInt32(NeighboursText_Quality.Text);
-            if (k > AllRows.GetInstance().FullFile.Count)
+
+            //wywołanie dla jednej okreslonej liczby sasiadow
+            if (AutomaticCheckBox_Quality.IsChecked == false)
             {
-                MessageBox.Show("Liczba sasiadow nie moze byc wieksza od ilosci obiektow w zbiorze");
-                IsError = true;
+                k = Convert.ToInt32(NeighboursText_Quality.Text);
+                if (k > AllRows.GetInstance().FullFile.Count-1)
+                {
+                    MessageBox.Show("Liczba sasiadow nie moze byc wieksza od ilosci obiektow w zbiorze - 1");
+                    IsError = true;
+                }
+
+
+                if (!IsError)
+                {
+                    Classification classificator = new Classification(k, metric, decisionColumn);
+                    quality = classificator.GetClassificationQuality();
+                    MessageBox.Show("Jakosc klasyfikatora k-nn dla metryki '" + metric + "' i k=" + k + " wynosi:\nQUALITY=" + quality);
+                }
             }
 
-            if (!IsError)
+            //wywolanie dla automatycznie zmiennej liczny sasiadow od 1 do n-1
+            else
             {
-                Classification classificator = new Classification(k, metric, decisionColumn);
-                quality = classificator.GetClassificationQuality();
-                MessageBox.Show("Jakosc klasyfikatora k-nn dla metryki '" + metric + "' i k=" + k + " wynosi:\nQUALITY=" + quality);
+                if (!IsError)
+                {
+                    Classification classificator = new Classification(0, metric, decisionColumn);
+                    List<decimal> qualities = classificator.GetClassificationQualityForAllNeighbours();
+
+                    MessageBoxResult result = MessageBox.Show("Jakosc klasyfikacji dla" + metric + "\nnajmniejsza: " + qualities.Min() + "\nnajwieksza: "
+                        + qualities.Max() + "\n\nCzy chcesz zapisać wszystkie wyniki do pliku?","Jakosc klasyfikacji k-nn",MessageBoxButton.YesNo);
+
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            string filePath;
+                            SaveFileDialog saveFileDialog = new SaveFileDialog();
+                            saveFileDialog.Filter = "txt files (*.txt)|*.txt";
+                            if (saveFileDialog.ShowDialog() == true)
+                            {
+                                filePath = saveFileDialog.FileName.ToString();
+                                FileReadWrite.WriteToFileDecimalList(filePath, qualities);
+                            }
+                            break;
+                    }
+                }
             }
             
+        }
+
+        private void AutomaticCheckBox_Quality_Click(object sender, RoutedEventArgs e)
+        {
+            if (AutomaticCheckBox_Quality.IsChecked == true) NeighboursText_Quality.IsEnabled = false;
+            else NeighboursText_Quality.IsEnabled = true;
         }
     }
 }

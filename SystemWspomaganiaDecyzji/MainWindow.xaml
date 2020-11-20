@@ -12,163 +12,177 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        
-            <Grid Name="Menu" HorizontalAlignment="Stretch">
-                <StackPanel Grid.ZIndex="2" HorizontalAlignment="Left">
-                    <Button Name="MenuButton" Click="MenuButton_Click" Width="50" Height="50" Background="#FFD7DCFA">
-                        <StackPanel>
-                            <Label>MENU</Label>
-                            <Image Margin="0,-10,0,-10" Width="40" Height="40" Source="/Styles/menuicon.png" />
-                        </StackPanel>
-                    </Button>
-                    <Grid></Grid>
-                </StackPanel>
-                <Grid Name="MenuGrid" Grid.ZIndex="1" Background="AliceBlue" HorizontalAlignment="Stretch">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Button Grid.Row="1" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ReadFileButton_Click">Załaduj dane</Button>
-                    <Button Name="SaveFileButton" Grid.Row="2" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveFileButton_Click">Zapisz plik</Button>
-                    <Button Name="ClasifyButton" Grid.Row="3" Height="25" Margin="0,5,5,5"  Background="#FFFFFBF0" Click="ClasifyButton_Click">Dodaj/Klasyfikuj</Button>
-                <Grid Grid.Column="1" Grid.RowSpan="4"  HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <GroupBox Grid.Column="0" BorderThickness="1" BorderBrush="DarkGray" >
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Dane numeryczne" />
-                            </GroupBox.Header>
-                            <StackPanel>
-                                <ComboBox Name="ColumnCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <ComboBox Name="TypeCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolejnosc --">
-                                    <ComboBoxItem>Według kolej. wystąpienia</ComboBoxItem>
-                                    <ComboBoxItem>Alfabetycznie</ComboBoxItem>
-                                </ComboBox>
-                                <Button x:Name="SaveButton_Numeric" Width="50" Margin="0,30,0,0" Background="#FFFFFBF0" Content="OK" Click="SaveButton_Numeric_Click"/>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Grid.Column="1" BorderThickness="1" BorderBrush="DarkGray">
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Dyskretyzacja" />
-                            </GroupBox.Header>
-                            <StackPanel>
-                                <ComboBox Name="ColumnCombo_Discret" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label>Ilość przedziałów:</Label>
-                                    <TextBox Name="IntervalsText_Discret" Margin="0,5,5,5" Width="30">2</TextBox>
+
+        <Grid Name="Menu" HorizontalAlignment="Stretch">
+            <StackPanel Grid.ZIndex="2" HorizontalAlignment="Left">
+                <Button Name="MenuButton" Click="MenuButton_Click" Width="50" Height="50" Background="#FFD7DCFA">
+                    <StackPanel>
+                        <Label>MENU</Label>
+                        <Image Margin="0,-10,0,-10" Width="40" Height="40" Source="/Styles/menuicon.png" />
+                    </StackPanel>
+                </Button>
+                <Grid></Grid>
+            </StackPanel>
+            <Grid Name="MenuGrid" Grid.ZIndex="1" Background="AliceBlue" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="1" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="ReadFileButton_Click">Załaduj dane</Button>
+                <Button Name="SaveFileButton" Grid.Row="2" Height="25" Margin="0,5,5,5" Background="#FFFFFBF0" Click="SaveFileButton_Click">Zapisz plik</Button>
+                <Button Name="ClasifyButton" Grid.Row="3" Height="25" Margin="0,5,5,5"  Background="#FFFFFBF0" Click="ClasifyButton_Click">Dodaj/Klasyfikuj</Button>
+                <TabControl Grid.Column="1" Grid.RowSpan="4" Background="AliceBlue">
+                    <TabItem Header="Preprocessing" Height="20" VerticalAlignment="Top" >
+                        <Grid Grid.Column="1" Grid.RowSpan="4"  HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Grid.Column="0" BorderThickness="1" BorderBrush="DarkGray" >
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Dane numeryczne" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="ColumnCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                    <ComboBox Name="TypeCombo_Numeric" Margin="5" IsEditable="True" Text="-- Kolejnosc --">
+                                        <ComboBoxItem>Według kolej. wystąpienia</ComboBoxItem>
+                                        <ComboBoxItem>Alfabetycznie</ComboBoxItem>
+                                    </ComboBox>
+                                    <Button x:Name="SaveButton_Numeric" Width="50" Margin="0,30,0,0" Background="#FFFFFBF0" Content="OK" Click="SaveButton_Numeric_Click"/>
                                 </StackPanel>
-                                <Button Name="SaveButton_Discret" Width="50" Margin="0,34,0,0" Background="#FFFFFBF0" Click="SaveButton_Discret_Click">OK</Button>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Grid.Column="2" BorderThickness="1" BorderBrush="DarkGray">
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Normalizacja" />
-                            </GroupBox.Header>
-                            <StackPanel>
-                                <ComboBox Name="ColumnCombo_Normal" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <Button Name="SaveButton_Normal" Width="50" Margin="0,62,0,0" Background="#FFFFFBF0" Click="SaveButton_Normal_Click">OK</Button>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Grid.Column="3" BorderThickness="1" BorderBrush="DarkGray">
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Przedziały" />
-                            </GroupBox.Header>
-                            <StackPanel>
-                                <ComboBox Name="ColumnCombo_Intervals" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Width="40" Margin="0,0,5,0">Min:</Label>
-                                    <Label Width="40" Margin="5,0,0,0">Max:</Label>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBox Name="MinText_Intervals" Width="40" Margin="0,-5,5,5">1</TextBox>
-                                    <TextBox Name="MaxText_Intervals" Width="40" Margin="5,-5,0,5">10</TextBox>
-                                </StackPanel>
-                                <Button Name="SaveButton_Intervals" Width="50" Margin="0,18,0,0" Background="#FFFFFBF0" Click="SaveButton_Intervals_Click">OK</Button>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Grid.Column="4" BorderThickness="1" BorderBrush="DarkGray">
-                            <GroupBox.Header>
-                                <Label FontWeight="Bold" Content="Procent min i maks" />
-                            </GroupBox.Header>
-                            <StackPanel>
-                                <ComboBox Name="ColumnCombo_Percent" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Width="40" Margin="0,0,5,0">Min:</Label>
-                                    <Label Width="40" Margin="5,0,0,0">Max:</Label>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBox Name="MinText_Percent" Width="40" Margin="0,-5,5,5">10</TextBox>
-                                    <TextBox Name="MaxText_Percent" Width="40" Margin="5,-5,0,5">10</TextBox>
-                                </StackPanel>
-                                <Button Name="SaveButton_Percent" Width="50" Margin="0,18,0,0" Background="#FFFFFBF0" Click="SaveButton_Percent_Click">OK</Button>
-                            </StackPanel>
-                        </GroupBox>
-                    <GroupBox Grid.Column="5" BorderThickness="1" BorderBrush="DarkGray">
-                        <GroupBox.Header>
-                            <Label FontWeight="Bold" Content="Wykresy" />
-                        </GroupBox.Header>
-                        <TabControl>
-                            <TabItem Header="2D" >
-                                <StackPanel Background="AliceBlue">
-                                    <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
-                                    <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                    <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- K.Decyzyjna --"></ComboBox>
-                                    <Button Name="SaveButton_2D" Click="SaveButton_2D_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
-                                </StackPanel>
-                            </TabItem>
-                            <TabItem Header="3D" >
-                                <StackPanel Background="AliceBlue">
-                                    <ComboBox Name="Column1Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
-                                    <ComboBox Name="Column2Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
-                                    <ComboBox Name="Column3Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 3 --"></ComboBox>
-                                    <Button Name="SaveButton_3D" Margin="5" Width="50" Background="#FFFFFBF0" Click="SaveButton_3D_Click">OK</Button>
-                                </StackPanel>
-                            </TabItem>
-                            <TabItem Header="Histogram" >
-                                <StackPanel Background="AliceBlue">
-                                    <ComboBox Name="ColumnCombo_Histogram" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                            </GroupBox>
+                            <GroupBox Grid.Column="1" BorderThickness="1" BorderBrush="DarkGray">
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Dyskretyzacja" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="ColumnCombo_Discret" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
                                     <StackPanel Orientation="Horizontal">
                                         <Label>Ilość przedziałów:</Label>
-                                        <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
+                                        <TextBox Name="IntervalsText_Discret" Margin="0,5,5,5" Width="30">2</TextBox>
                                     </StackPanel>
-                                    <Button Name="SaveButton_Histogram" Click="SaveButton_Histogram_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                    <Button Name="SaveButton_Discret" Width="50" Margin="0,34,0,0" Background="#FFFFFBF0" Click="SaveButton_Discret_Click">OK</Button>
                                 </StackPanel>
-                            </TabItem>
-                        </TabControl>
-                    </GroupBox>
-                    <GroupBox Grid.Column="6" BorderThickness="1" BorderBrush="DarkGray">
-                        <GroupBox.Header>
-                            <Label FontWeight="Bold" Content="Jakość klasyfikacji" />
-                        </GroupBox.Header>
-                        <StackPanel>
-                            <ComboBox Name="MetricCombo_Quality" Margin="5" IsEditable="True" Text="-- Metryka --"></ComboBox>
-                            <ComboBox Name="ClassifyColumnCombo_Quality" Margin="5" IsEditable="True" Text="-- K. decyzyjna --"></ComboBox>
-                            <StackPanel Orientation="Horizontal">
-                                <Label>Ilość sąsiadów:</Label>
-                                <TextBox Name="NeighboursText_Quality" Margin="0,5,5,5" Width="30">1</TextBox>
-                            </StackPanel>
-                            <Button Name="SaveButton_Quality" Width="50" Margin="0,2,0,0" Background="#FFFFFBF0" Click="SaveButton_Quality_Click">OK</Button>
-                        </StackPanel>
-                    </GroupBox>
-                </Grid>
-                </Grid>
+                            </GroupBox>
+                            <GroupBox Grid.Column="2" BorderThickness="1" BorderBrush="DarkGray">
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Normalizacja" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="ColumnCombo_Normal" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                    <Button Name="SaveButton_Normal" Width="50" Margin="0,62,0,0" Background="#FFFFFBF0" Click="SaveButton_Normal_Click">OK</Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Column="3" BorderThickness="1" BorderBrush="DarkGray">
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Przedziały" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="ColumnCombo_Intervals" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Width="40" Margin="0,0,5,0">Min:</Label>
+                                        <Label Width="40" Margin="5,0,0,0">Max:</Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBox Name="MinText_Intervals" Width="40" Margin="0,-5,5,5">1</TextBox>
+                                        <TextBox Name="MaxText_Intervals" Width="40" Margin="5,-5,0,5">10</TextBox>
+                                    </StackPanel>
+                                    <Button Name="SaveButton_Intervals" Width="50" Margin="0,18,0,0" Background="#FFFFFBF0" Click="SaveButton_Intervals_Click">OK</Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Column="4" BorderThickness="1" BorderBrush="DarkGray" >
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Procent min i maks" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="ColumnCombo_Percent" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Width="40" Margin="0,0,5,0">Min:</Label>
+                                        <Label Width="40" Margin="5,0,0,0">Max:</Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBox Name="MinText_Percent" Width="40" Margin="0,-5,5,5">10</TextBox>
+                                        <TextBox Name="MaxText_Percent" Width="40" Margin="5,-5,0,5">10</TextBox>
+                                    </StackPanel>
+                                    <Button Name="SaveButton_Percent" Width="50" Margin="0,18,0,0" Background="#FFFFFBF0" Click="SaveButton_Percent_Click">OK</Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Column="5" BorderThickness="1" BorderBrush="DarkGray" >
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Wykresy" />
+                                </GroupBox.Header>
+                                <TabControl>
+                                    <TabItem Header="2D" >
+                                        <StackPanel Background="AliceBlue">
+                                            <ComboBox Name="Column1Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
+                                            <ComboBox Name="Column2Combo_2D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                            <ComboBox Name="Column3Combo_2D" Margin="5" IsEditable="True" Text="-- K.Decyzyjna --"></ComboBox>
+                                            <Button Name="SaveButton_2D" Click="SaveButton_2D_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                        </StackPanel>
+                                    </TabItem>
+                                    <TabItem Header="3D" >
+                                        <StackPanel Background="AliceBlue">
+                                            <ComboBox Name="Column1Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 1 --"></ComboBox>
+                                            <ComboBox Name="Column2Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 2 --"></ComboBox>
+                                            <ComboBox Name="Column3Combo_3D" Margin="5" IsEditable="True" Text="-- Kolumna 3 --"></ComboBox>
+                                            <Button Name="SaveButton_3D" Margin="5" Width="50" Background="#FFFFFBF0" Click="SaveButton_3D_Click">OK</Button>
+                                        </StackPanel>
+                                    </TabItem>
+                                    <TabItem Header="Histogram" >
+                                        <StackPanel Background="AliceBlue">
+                                            <ComboBox Name="ColumnCombo_Histogram" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label>Ilość przedziałów:</Label>
+                                                <TextBox Name="IntervalsText_Histogram" Margin="0,5,5,5" Width="30">2</TextBox>
+                                            </StackPanel>
+                                            <Button Name="SaveButton_Histogram" Click="SaveButton_Histogram_Click" Margin="5" Width="50" Background="#FFFFFBF0">OK</Button>
+                                        </StackPanel>
+                                    </TabItem>
+                                </TabControl>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Klasyfikacja">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Grid.Column="0" BorderThickness="1" BorderBrush="DarkGray">
+                                <GroupBox.Header>
+                                    <Label FontWeight="Bold" Content="Jakość klasyfikacji k-nn" />
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <ComboBox Name="MetricCombo_Quality" Margin="5" IsEditable="True" Text="-- Metryka --"></ComboBox>
+                                    <ComboBox Name="ClassifyColumnCombo_Quality" Margin="5" IsEditable="True" Text="-- K. decyzyjna --"></ComboBox>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                                        <TextBlock Width="55" TextWrapping="Wrap">Ilość sąsiadów:</TextBlock>
+                                        <TextBox Name="NeighboursText_Quality" Margin="0,5,5,5" Width="30">1</TextBox>
+                                        <CheckBox Name="AutomaticCheckBox_Quality" ToolTip="Od 1 do n-1"  VerticalAlignment="Center" Click="AutomaticCheckBox_Quality_Click">
+                                            <TextBlock  TextWrapping="WrapWithOverflow">Automatyczna</TextBlock>
+                                        </CheckBox>
+                                    </StackPanel>
+                                    <Button Name="SaveButton_Quality" Width="50" Margin="0,2,0,0" Background="#FFFFFBF0" Click="SaveButton_Quality_Click">OK</Button>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </Grid>
+        </Grid>
 
 
-            <DataGrid Grid.Row="1" x:Name="dataGrid"
+        <DataGrid Grid.Row="1" x:Name="dataGrid"
                       AutoGenerateColumns="False"  
                       EnableRowVirtualization="True"
                       EnableColumnVirtualization="True"
@@ -177,13 +191,13 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
                       LoadingRow="DataGrid_LoadingRow">
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <EventSetter Event="Click" Handler="columnHeaderClick"></EventSetter>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-            </DataGrid>
-            
-            
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <EventSetter Event="Click" Handler="columnHeaderClick"></EventSetter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+
+
     </Grid>
 </Window>

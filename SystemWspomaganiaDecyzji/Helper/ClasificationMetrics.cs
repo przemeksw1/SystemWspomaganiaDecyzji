@@ -168,6 +168,9 @@ namespace SystemWspomaganiaDecyzji.Helper
                 for (int i=0; i< vectorTimesMatrix.Count; i++)
                     cell += vectorTimesMatrix[i] * vector[i];
 
+                //result = sqrt(MD^2)
+                cell = Math.Sqrt(cell);
+
                 //dodanie numeru wiersza i wyniku do zwracanej listy
                 results.Add(rowId, cell);
                 rowId++;

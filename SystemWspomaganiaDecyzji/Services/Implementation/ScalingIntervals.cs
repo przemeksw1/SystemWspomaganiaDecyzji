@@ -10,15 +10,15 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
     {
         public static void DoScalingIntervals(int numOfColumn, decimal newMin, decimal newMax)
         {
-            double[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, numOfColumn);
-            decimal oldMin = Convert.ToDecimal(minmax[0]);
-            decimal oldMax = Convert.ToDecimal(minmax[1]);
+            decimal[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, numOfColumn);
+            decimal oldMin = minmax[0];
+            decimal oldMax = minmax[1];
             decimal k = (newMax - newMin) / (oldMax - oldMin); //skala rzutowania przedziałów
             //decimal k = newMax / Convert.ToDecimal(minmax[1]); 
 
 
             //rzutowanie przedziału na nowy przez dodanie nowej kolumny
-            AllRows.GetInstance().HeaderName.Insert(numOfColumn + 1, AllRows.GetInstance().HeaderName[numOfColumn] + "__skal");
+            AllRows.GetInstance().HeaderName.Insert(numOfColumn + 1, AllRows.GetInstance().HeaderName[numOfColumn] + "__skal"+newMin+":"+newMax);
             string cell = "";
             decimal newValue;
             decimal value = 0;

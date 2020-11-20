@@ -19,12 +19,12 @@ namespace SystemWspomaganiaDecyzji.Helper
             return sortedColumn;
         }
 
-        public static double[] FindMinMax(List<RowView> allRows, int columnNumber)
+        public static decimal[] FindMinMax(List<RowView> allRows, int columnNumber)
         {
             List<double> sortedColumn = SortRowsByColumn(allRows, columnNumber);
-            double[] minmax = new double[2];
-            minmax[0] = sortedColumn[0];
-            minmax[1] = sortedColumn[sortedColumn.Count - 1];
+            decimal[] minmax = new decimal[2];
+            minmax[0] = Convert.ToDecimal(sortedColumn[0]);
+            minmax[1] = Convert.ToDecimal(sortedColumn[sortedColumn.Count - 1]);
             return minmax;
         }
 

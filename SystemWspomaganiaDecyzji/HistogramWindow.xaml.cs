@@ -157,10 +157,10 @@ namespace SystemWspomaganiaDecyzji
                 List<double> allValue = new List<double>();
                 ChartValues<double> rowCount = new ChartValues<double>();
 
-                List<double> intervals = new List<double>();
-                double[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, columnNumber);
-                double intervalSize = (minmax[1] - minmax[0]) / countOfIntervals;
-                double leftLimit = minmax[0];
+                List<decimal> intervals = new List<decimal>();
+                decimal[] minmax = MathHelper.FindMinMax(AllRows.GetInstance().FullFile, columnNumber);
+                decimal intervalSize = (minmax[1] - minmax[0]) / countOfIntervals;
+                decimal leftLimit = minmax[0];
                 while (leftLimit < minmax[1])
                 {
                     intervals.Add(leftLimit);
@@ -177,7 +177,7 @@ namespace SystemWspomaganiaDecyzji
                             allValue.Add(cell);
                             break;
                         }
-                        else if (Convert.ToDouble(AllRows.GetInstance().FullFile[i].Value[columnNumber]) < intervals[j + 1])
+                        else if (Convert.ToDecimal(AllRows.GetInstance().FullFile[i].Value[columnNumber]) < intervals[j + 1])
                         {
                             cell = j + 1;
                             allValue.Add(cell);
@@ -192,11 +192,11 @@ namespace SystemWspomaganiaDecyzji
                 {
                     if (i == intervals.Count() - 1)
                     {
-                        label[i] = "<" + intervals[i].ToString() + " : " + minmax[1].ToString() + ">";
+                        label[i] = "<" + Math.Round(intervals[i],3).ToString() + " : " + minmax[1].ToString() + ">";
                     }
                     else
                     {
-                        label[i] = "<"+ intervals[i].ToString() + " : " + intervals[i +1 ].ToString() + ")";
+                        label[i] = "<"+ Math.Round(intervals[i],3).ToString() + " : " + Math.Round(intervals[i+1],3).ToString() + ")";
                     }
                     var counter = allValue.Where(c => c == i + 1).Count();
                     rowCount.Add(counter);
