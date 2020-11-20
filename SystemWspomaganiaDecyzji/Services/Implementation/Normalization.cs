@@ -21,7 +21,9 @@ namespace SystemWspomaganiaDecyzji.Services.Implementation
             for (int i = 0; i < AllRows.GetInstance().FullFile.Count; i++)
             {
                 value = Convert.ToDecimal(AllRows.GetInstance().FullFile[i].Value[numOfColumn]);
-                result = (value - avg) / deviation;
+                if (deviation != 0)
+                    result = (value - avg) / deviation;
+                else result = (value - avg);
                 //testAvg += result;
                 result = Math.Round(result, 3);
                 cell = result.ToString();

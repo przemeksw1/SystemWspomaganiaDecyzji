@@ -284,14 +284,31 @@ namespace SystemWspomaganiaDecyzji
 
         private void SaveButton_Normal_Click(object sender, RoutedEventArgs e)
         {
-            int numOfColumn = ColumnCombo_Normal.SelectedIndex;
-            if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+            if (ColumnCheck_Normal.IsChecked == false)
+            {
+                int numOfColumn = ColumnCombo_Normal.SelectedIndex;
+                if (numOfColumn < 0) MessageBox.Show("Wybierz kolumnę");
+                else
+                {
+                    Normalization.DoNormalization(numOfColumn);
+                    //odświeżenie widoku - wyświetlenie zmian
+                    DisplayNewDataInMenu(numOfColumn + 1);
+                }
+            }
             else
             {
-                Normalization.DoNormalization(numOfColumn);
-                //odświeżenie widoku - wyświetlenie zmian
-                DisplayNewDataInMenu(numOfColumn + 1);
+                for (int i = 0; i < AllRows.GetInstance().HeaderName.Count-1; i+=2)
+                {
+                    Normalization.DoNormalization(i);
+                    //odświeżenie widoku - wyświetlenie zmian
+                    DisplayNewDataInMenu(i + 1);
+                }
             }
+        }
+        private void ColumnCheck_Normal_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (ColumnCheck_Normal.IsChecked == true) ColumnCombo_Normal.IsEnabled = false;
+            else ColumnCombo_Normal.IsEnabled = true;
         }
 
         private void SaveButton_Intervals_Click(object sender, RoutedEventArgs e)
@@ -423,5 +440,7 @@ namespace SystemWspomaganiaDecyzji
             if (AutomaticCheckBox_Quality.IsChecked == true) NeighboursText_Quality.IsEnabled = false;
             else NeighboursText_Quality.IsEnabled = true;
         }
+
+        
     }
 }

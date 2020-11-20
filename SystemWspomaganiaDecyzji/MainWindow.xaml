@@ -80,7 +80,8 @@
                                 </GroupBox.Header>
                                 <StackPanel>
                                     <ComboBox Name="ColumnCombo_Normal" Margin="5" IsEditable="True" Text="-- Kolumna --"></ComboBox>
-                                    <Button Name="SaveButton_Normal" Width="50" Margin="0,62,0,0" Background="#FFFFFBF0" Click="SaveButton_Normal_Click">OK</Button>
+                                    <CheckBox Name="ColumnCheck_Normal" HorizontalAlignment="Center" Click="ColumnCheck_Normal_Clicked">Wszystkie kolumny</CheckBox>
+                                    <Button Name="SaveButton_Normal" Width="50" Margin="0,47,0,0" Background="#FFFFFBF0" Click="SaveButton_Normal_Click">OK</Button>
                                 </StackPanel>
                             </GroupBox>
                             <GroupBox Grid.Column="3" BorderThickness="1" BorderBrush="DarkGray">
